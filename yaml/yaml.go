@@ -1,4 +1,4 @@
-package fortio
+package yaml
 
 import (
 	"fmt"
