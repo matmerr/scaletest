@@ -10,19 +10,19 @@ import (
 	"github.com/matmerr/scaletest/scenarios/largescale"
 )
 
-type Init struct {
+type Welcome struct {
 }
 
 // All required for a step is `Do(context.Context) error`
-func (i *Init) Do(ctx context.Context) error {
-	fmt.Println("Init")
+func (i *Welcome) Do(ctx context.Context) error {
+	fmt.Println("starting workflow")
 	return nil
 }
 
 func TestWorkflow(t *testing.T) {
 	root := new(flow.Workflow).Add(
 		flow.Pipe(
-			new(Init),
+			new(Welcome),
 			largescale.LargeScaleWorkflow(),
 		),
 	)

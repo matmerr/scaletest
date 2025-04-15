@@ -10,21 +10,21 @@ import (
 )
 
 func LargeScaleWorkflow() *flow.Workflow {
-	var (
-		generateYamls = &steps.GenerateYamlsStep{
-			Directory:                     "./output/",
-			Namespaces:                    35,
-			ServerDeploymentsPerNamespace: 5,
-			ServerReplicasPerDeployment:   150,
-			ServerServicesPerNamespace:    5,
-			ClientDeploymentsPerNamespace: 5,
-			ClientReplicasPerDeployment:   150,
-		}
-		applyYamls = flow.Func("apply all yamls", func(ctx context.Context) error {
-			fmt.Println("apply all yamls")
-			return nil
-		})
-	)
+	generateYamls := &steps.GenerateYamlsStep{
+		Directory:                     "./output/",
+		Namespaces:                    35,
+		ServerDeploymentsPerNamespace: 5,
+		ServerReplicasPerDeployment:   150,
+		ServerServicesPerNamespace:    5,
+		ClientDeploymentsPerNamespace: 5,
+		ClientReplicasPerDeployment:   150,
+	}
+
+	applyYamls := flow.Func("apply all yamls", func(ctx context.Context) error {
+		fmt.Println("this is where we apply all yamls")
+		return nil
+	})
+
 	// compose steps into a workflow!
 	w := new(flow.Workflow)
 	w.Add(
