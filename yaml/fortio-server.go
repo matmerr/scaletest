@@ -1,9 +1,4 @@
-package main
-
-import (
-	"os"
-	"text/template"
-)
+package fortio
 
 type FortioServerDeployment struct {
 	Name                string
@@ -12,6 +7,10 @@ type FortioServerDeployment struct {
 	ServiceBackendLabel string
 	AppLabel            string
 	NodeSelector        string
+}
+
+func (f FortioServerDeployment) GetTemplate() string {
+	return fortioServerDeploymentTemplate
 }
 
 const fortioServerDeploymentTemplate = `
@@ -43,23 +42,3 @@ spec:
           ports:
             - containerPort: 8080
 `
-
-func CreateServerDeployments(filename string, deployment *FortioServerDeployment) {
-	// Create a new template and parse the YAML template into it
-	tmpl, err := template.New("server").Parse(fortioServerDeploymentTemplate)
-	if err != nil {
-		panic(err)
-	}
-
-	file, err := os.Create(filename)
-	if err != nil {
-		panic(err)
-	}
-	defer file.Close()
-
-	// Execute the template with the data and write to standard output
-	err = tmpl.Execute(file, deployment)
-	if err != nil {
-		panic(err)
-	}
-}
