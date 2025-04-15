@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: fortio
+    group: cilium-acns-network-load
+    role: server
+    svc: fortio-server-service-0
+  name: fortio-server-0
+  namespace: network-load-1
+spec:
+  replicas: 200
+  selector:
+    matchLabels:
+      app: fortio
+      name: fortio-server-0
+      role: server
+  strategy:
+    rollingUpdate:
+      maxSurge: 20%
+      maxUnavailable: 20%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: fortio
+        group: cilium-acns-network-load
+        name: fortio-server-0
+        restart: start
+        role: server
+        svc: fortio-server-service-0
+    spec:
+      containers:
+        - args:
+            - server
+            - -http-port
+            - 0.0.0.0:8080
+          image: fortio/fortio
+          imagePullPolicy: IfNotPresent
+          name: fortio
+          ports:
+            - containerPort: 8078
+              protocol: TCP
+            - containerPort: 8079
+              protocol: TCP
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 8081
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 10m
+              memory: 50M
+      nodeSelector:
+        agentpool: workload
+      tolerations:
+        - effect: NoExecute
+          key: node.kubernetes.io/not-ready
+          operator: Exists
+          tolerationSeconds: 900
+        - effect: NoExecute
+          key: node.kubernetes.io/unreachable
+          operator: Exists
+          tolerationSeconds: 900
+        - effect: NoSchedule
+          key: network-load
+          operator: Equal
+          value: "true"
