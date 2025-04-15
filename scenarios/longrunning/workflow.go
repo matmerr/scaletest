@@ -1,4 +1,4 @@
-package largescale
+package longrunning
 
 import (
 	"context"
@@ -6,12 +6,17 @@ import (
 	"time"
 
 	flow "github.com/Azure/go-workflow"
-	"github.com/matmerr/scaletest/scenarios/largescale/steps"
+	"github.com/matmerr/scaletest/scenarios/longrunning/steps"
 )
 
-func LargeScaleWorkflow() *flow.Workflow {
+func LargeScaleWorkflow(yamlDirectory string) *flow.Workflow {
+	// clean the directory first
+	cleanDirectory := &steps.CleanDirectoryStep{
+		Directory: yamlDirectory,
+	}
+
 	generateYamls := &steps.GenerateYamlsStep{
-		Directory:                     "./output/",
+		Directory:                     yamlDirectory,
 		Namespaces:                    35,
 		ServerDeploymentsPerNamespace: 5,
 		ServerReplicasPerDeployment:   150,
@@ -25,12 +30,18 @@ func LargeScaleWorkflow() *flow.Workflow {
 		return nil
 	})
 
-	// compose steps into a workflow!
 	w := new(flow.Workflow)
 	w.Add(
+
+		flow.Pipe(
+			cleanDirectory,
+			generateYamls,
+			applyYamls,
+		),
+		// ensure generateYamls is called before applyYamls
 		flow.Steps(applyYamls).DependsOn(generateYamls),
 
-		// other configurations, like retry, timeout, condition, etc.
+		// applyYamls will need retry
 		flow.Step(applyYamls).
 			Retry(func(ro *flow.RetryOption) {
 				ro.Attempts = 3 // retry 3 times
@@ -39,7 +50,6 @@ func LargeScaleWorkflow() *flow.Workflow {
 
 		// use Input to change step at runtime
 		flow.Step(generateYamls).Input(func(ctx context.Context, g *steps.GenerateYamlsStep) error {
-			g.Directory = "./output/"
 			return nil
 		}),
 	)
