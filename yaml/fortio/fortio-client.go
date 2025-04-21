@@ -42,13 +42,14 @@ spec:
         - name: fortio
           args:
             - load
+            - -no-reresolve
             - -nocatchup
             - -uniform
             - -sequential-warmup
             - -udp-timeout
             - 1500ms
             - -timeout
-            - 5s
+            - 30s
             - -c
             - "{{ .QPS }}"
             - -qps
