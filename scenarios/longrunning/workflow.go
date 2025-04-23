@@ -16,13 +16,18 @@ func LargeScaleWorkflow(yamlDirectory string) *flow.Workflow {
 	}
 
 	generateYamls := &steps.GenerateYamlsStep{
-		Directory:                     yamlDirectory,
-		Namespaces:                    35,
+		Directory:  yamlDirectory,
+		Namespaces: 35,
+
 		ServerDeploymentsPerNamespace: 5,
 		ServerReplicasPerDeployment:   150,
-		ServerServicesPerNamespace:    5,
+
+		ServerServicesPerNamespace: 5,
+
 		ClientDeploymentsPerNamespace: 5,
-		ClientReplicasPerDeployment:   150,
+		ClientReplicasPerDeployment:   150, // normally 150
+
+		ClientQPS: 1600,
 	}
 
 	applyYamls := flow.Func("apply all yamls", func(ctx context.Context) error {

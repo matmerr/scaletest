@@ -42,8 +42,8 @@ spec:
         - name: fortio
           args:
             - load
-            - -no-reresolve
             - -nocatchup
+            - -no-reresolve
             - -uniform
             - -sequential-warmup
             - -udp-timeout

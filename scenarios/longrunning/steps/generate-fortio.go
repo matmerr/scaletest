@@ -16,13 +16,14 @@ type GenerateYamlsStep struct {
 	ServerServicesPerNamespace    int
 	ClientDeploymentsPerNamespace int
 	ClientReplicasPerDeployment   int
+	ClientQPS                     int
 }
 
 func (g *GenerateYamlsStep) Do(ctx context.Context) error {
 	for nsNum := 0; nsNum < g.Namespaces; nsNum++ {
 
 		namespace := fortio.Namespace{
-			Name: "fortio-" + fmt.Sprint(nsNum),
+			Name: "ns" + fmt.Sprint(nsNum),
 		}
 
 		nsDirectory := fmt.Sprintf("%s/longrunning/00-namespaces", g.Directory)
@@ -31,14 +32,14 @@ func (g *GenerateYamlsStep) Do(ctx context.Context) error {
 			return fmt.Errorf("failed to create namespace yaml file: %w", err)
 		}
 
-		targetDirectory := fmt.Sprintf("%s/longrunning/fortio-%d", g.Directory, nsNum)
+		targetDirectory := fmt.Sprintf("%s/longrunning/ns-%d", g.Directory, nsNum)
 
 		// create all deploymens in the namespace
 		for deployNum := 0; deployNum < g.ServerDeploymentsPerNamespace; deployNum++ {
 			// create server deployment
 			server := fortio.FortioServerDeployment{
 				Name:                fmt.Sprintf("ns%d-server-%d", nsNum, deployNum),
-				Namespace:           "fortio-" + fmt.Sprint(nsNum),
+				Namespace:           "ns" + fmt.Sprint(nsNum),
 				Replicas:            g.ServerReplicasPerDeployment,
 				ServiceBackendLabel: "fortio-service-" + fmt.Sprint(deployNum),
 				AppLabel:            "fortio-server-" + fmt.Sprint(deployNum),
@@ -56,7 +57,7 @@ func (g *GenerateYamlsStep) Do(ctx context.Context) error {
 			deployBackend := svcNum % g.ServerDeploymentsPerNamespace
 			service := fortio.FortioService{
 				Name:                fmt.Sprintf("ns%d-service-%d", nsNum, svcNum),
-				Namespace:           "fortio-" + fmt.Sprint(nsNum),
+				Namespace:           "ns" + fmt.Sprint(nsNum),
 				TargetPort:          "8080",
 				ServiceBackendLabel: "fortio-service-" + fmt.Sprint(deployBackend),
 			}
@@ -74,12 +75,12 @@ func (g *GenerateYamlsStep) Do(ctx context.Context) error {
 
 			client := fortio.FortioClientDeployment{
 				Name:         fmt.Sprintf("ns%d-client-%d", nsNum, clientNum),
-				Namespace:    "fortio-" + fmt.Sprint(nsNum),
+				Namespace:    "ns" + fmt.Sprint(nsNum),
 				Replicas:     g.ClientReplicasPerDeployment,
 				RequestURL:   fmt.Sprintf("ns%d-service-%d", nsNum, svcNum),
 				RequestPort:  "8080",
 				AppLabel:     "fortio-client-" + fmt.Sprint(clientNum),
-				QPS:          "1000",
+				QPS:          fmt.Sprintf("%d", g.ClientQPS),
 				NodeSelector: "scenario: highcount",
 			}
 			err := yaml.CreateYamlFile(fmt.Sprintf("%s/3-%d-client.yaml", targetDirectory, clientNum), &client)
@@ -90,7 +91,7 @@ func (g *GenerateYamlsStep) Do(ctx context.Context) error {
 
 		toolbox := fortio.ToolboxDeployment{
 			Name:         fmt.Sprintf("ns%d-toolbox", nsNum),
-			Namespace:    "fortio-" + fmt.Sprint(nsNum),
+			Namespace:    "ns" + fmt.Sprint(nsNum),
 			NodeSelector: "scenario: highcount",
 			Replicas:     1,
 		}
