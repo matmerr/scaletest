@@ -36,7 +36,6 @@ func (g *GenerateYamlsStep) Do(ctx context.Context) error {
 
 		// create all deploymens in the namespace
 		for deployNum := 0; deployNum < g.ServerDeploymentsPerNamespace; deployNum++ {
-			// create server deployment
 			server := fortio.FortioServerDeployment{
 				Name:                fmt.Sprintf("ns%d-server-%d", nsNum, deployNum),
 				Namespace:           "ns" + fmt.Sprint(nsNum),
@@ -58,7 +57,7 @@ func (g *GenerateYamlsStep) Do(ctx context.Context) error {
 			service := fortio.FortioService{
 				Name:                fmt.Sprintf("ns%d-service-%d", nsNum, svcNum),
 				Namespace:           "ns" + fmt.Sprint(nsNum),
-				TargetPort:          "8080",
+				TargetPort:          8080,
 				ServiceBackendLabel: "fortio-service-" + fmt.Sprint(deployBackend),
 			}
 
@@ -70,22 +69,37 @@ func (g *GenerateYamlsStep) Do(ctx context.Context) error {
 
 		// create all client deployments
 		for clientNum := 0; clientNum < g.ClientDeploymentsPerNamespace; clientNum++ {
-
 			svcNum := clientNum % g.ServerServicesPerNamespace
+			svcName := fmt.Sprintf("ns%d-service-%d", nsNum, svcNum)
+			appLabel := "fortio-client-" + fmt.Sprint(clientNum)
+			requestPort := 8080
 
 			client := fortio.FortioClientDeployment{
 				Name:         fmt.Sprintf("ns%d-client-%d", nsNum, clientNum),
-				Namespace:    "ns" + fmt.Sprint(nsNum),
+				Namespace:    namespace.Name,
 				Replicas:     g.ClientReplicasPerDeployment,
 				RequestURL:   fmt.Sprintf("ns%d-service-%d", nsNum, svcNum),
-				RequestPort:  "8080",
-				AppLabel:     "fortio-client-" + fmt.Sprint(clientNum),
+				RequestPort:  requestPort,
+				AppLabel:     appLabel,
 				QPS:          fmt.Sprintf("%d", g.ClientQPS),
 				NodeSelector: "scenario: highcount",
 			}
 			err := yaml.CreateYamlFile(fmt.Sprintf("%s/3-%d-client.yaml", targetDirectory, clientNum), &client)
 			if err != nil {
 				return fmt.Errorf("failed to create client yaml file: %w", err)
+			}
+
+			fqdnPolicy := fortio.ClientFQDNPolicy{
+				Name:                   fmt.Sprintf("ns%d-client-%d-fqdn-policy", nsNum, clientNum),
+				Namespace:              namespace.Name,
+				AppLabel:               appLabel,
+				ToPort:                 requestPort,
+				TargetServiceName:      svcName,
+				TargetServiceNamespace: namespace.Name,
+			}
+			err = yaml.CreateYamlFile(fmt.Sprintf("%s/4-%d-fqdn-allow.yaml", targetDirectory, clientNum), &fqdnPolicy)
+			if err != nil {
+				return fmt.Errorf("failed to create client fqdn allow yaml file: %w", err)
 			}
 		}
 

@@ -5,7 +5,7 @@ type FortioClientDeployment struct {
 	Namespace    string
 	Replicas     int
 	RequestURL   string
-	RequestPort  string
+	RequestPort  int
 	AppLabel     string
 	QPS          string
 	NodeSelector string
@@ -43,7 +43,6 @@ spec:
           args:
             - load
             - -nocatchup
-            - -no-reresolve
             - -uniform
             - -sequential-warmup
             - -udp-timeout

@@ -1,0 +1,15 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: allow-all-to-ns0-server-0
+  namespace: ns0
+spec:
+  endpointSelector:
+    matchLabels:
+      app: fortio-server-0
+  ingress:
+    - fromEntities:
+        - all
+  egress:
+    - toEntities:
+        - all
