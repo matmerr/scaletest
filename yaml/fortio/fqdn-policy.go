@@ -1,11 +1,11 @@
 package fortio
 
 type ClientFQDNPolicy struct {
-	Name                string
-	Namespace           string
-	TargetPort          string
-	AppLabel            string
-	ServiceBackendLabel string
+	Name                     string
+	Namespace                string
+	TargetPort               string
+	AppLabelForPolicyToApply string
+	ServiceBackendLabel      string
 }
 
 func (f ClientFQDNPolicy) GetTemplate() string {
@@ -21,7 +21,7 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      app: {{ .AppLabel }}
+      app: {{ .AppLabelForPolicyToApply }}
   egress:
     - toEndpoints:
       - matchLabels:
@@ -39,7 +39,6 @@ spec:
     - toEndpoints:
         - matchLabels:
             svc: {{ .ServiceBackendLabel }}
-
   ingress:
   - fromEntities:
     - all

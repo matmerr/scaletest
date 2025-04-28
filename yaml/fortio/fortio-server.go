@@ -19,6 +19,9 @@ kind: Deployment
 metadata:
   name: {{ .Name }}
   namespace: {{ .Namespace }}
+  labels:
+    role: server
+    app: {{ .AppLabel }}
 spec:
   replicas: {{ .Replicas }}
   selector:

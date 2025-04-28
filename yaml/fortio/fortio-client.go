@@ -21,11 +21,14 @@ kind: Deployment
 metadata:
   name: {{ .Name }}
   namespace: {{ .Namespace }}
+  labels: 
+    role: client
+    app: {{ .AppLabel }}
 spec:
   replicas: {{ .Replicas }}
   selector:
     matchLabels:
-      role: load
+      role: client
       app: {{ .AppLabel }}
   strategy:
     rollingUpdate:
@@ -35,7 +38,7 @@ spec:
   template:
     metadata:
       labels:
-        role: load
+        role: client
         app: {{ .AppLabel }}
     spec:
       containers:
@@ -80,7 +83,7 @@ spec:
           operator: Exists
           tolerationSeconds: 900
         - effect: NoSchedule
-          key: network-load
+          key: network-client
           operator: Equal
           value: "true"
 
