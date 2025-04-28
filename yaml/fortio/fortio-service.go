@@ -3,7 +3,7 @@ package fortio
 type FortioService struct {
 	Name                string
 	Namespace           string
-	TargetPort          int
+	TargetPort          string
 	ServiceBackendLabel string
 }
 

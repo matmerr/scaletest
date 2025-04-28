@@ -40,7 +40,7 @@ func (g *GenerateYamlsStep) Do(ctx context.Context) error {
 				Name:                fmt.Sprintf("ns%d-server-%d", nsNum, deployNum),
 				Namespace:           "ns" + fmt.Sprint(nsNum),
 				Replicas:            g.ServerReplicasPerDeployment,
-				ServiceBackendLabel: "fortio-service-" + fmt.Sprint(deployNum),
+				ServiceBackendLabel: fmt.Sprintf("ns%d-service-%d", nsNum, deployNum),
 				AppLabel:            "fortio-server-" + fmt.Sprint(deployNum),
 				NodeSelector:        "scenario: highcount",
 			}
@@ -53,18 +53,30 @@ func (g *GenerateYamlsStep) Do(ctx context.Context) error {
 
 		// create the services in the namespace
 		for svcNum := 0; svcNum < g.ServerServicesPerNamespace; svcNum++ {
-			deployBackend := svcNum % g.ServerDeploymentsPerNamespace
+			deployNum := svcNum % g.ServerDeploymentsPerNamespace
 			service := fortio.FortioService{
 				Name:                fmt.Sprintf("ns%d-service-%d", nsNum, svcNum),
 				Namespace:           "ns" + fmt.Sprint(nsNum),
-				TargetPort:          8080,
-				ServiceBackendLabel: "fortio-service-" + fmt.Sprint(deployBackend),
+				TargetPort:          fmt.Sprintf("%d", 8080),
+				ServiceBackendLabel: fmt.Sprintf("ns%d-service-%d", nsNum, svcNum),
 			}
 
 			err := yaml.CreateYamlFile(fmt.Sprintf("%s/2-%d-service.yaml", targetDirectory, svcNum), &service)
 			if err != nil {
 				return fmt.Errorf("failed to create service yaml file: %w", err)
 			}
+
+			fqdnPolicy := fortio.ClientFQDNPolicy{
+				Name:                fmt.Sprintf("ns%d-toolbox-to-service-%d-fqdn-policy", nsNum, svcNum),
+				Namespace:           namespace.Name,
+				AppLabel:            "toolbox",
+				ServiceBackendLabel: fmt.Sprintf("ns%d-service-%d", nsNum, deployNum),
+			}
+			err = yaml.CreateYamlFile(fmt.Sprintf("%s/4-toolbox-to-service-%d-fqdn-allow.yaml", targetDirectory, svcNum), &fqdnPolicy)
+			if err != nil {
+				return fmt.Errorf("failed to create client fqdn allow yaml file: %w", err)
+			}
+
 		}
 
 		// create all client deployments
@@ -72,7 +84,7 @@ func (g *GenerateYamlsStep) Do(ctx context.Context) error {
 			svcNum := clientNum % g.ServerServicesPerNamespace
 			svcName := fmt.Sprintf("ns%d-service-%d", nsNum, svcNum)
 			appLabel := "fortio-client-" + fmt.Sprint(clientNum)
-			requestPort := 8080
+			requestPort := fmt.Sprintf("%d", 8080)
 
 			client := fortio.FortioClientDeployment{
 				Name:         fmt.Sprintf("ns%d-client-%d", nsNum, clientNum),
@@ -90,12 +102,10 @@ func (g *GenerateYamlsStep) Do(ctx context.Context) error {
 			}
 
 			fqdnPolicy := fortio.ClientFQDNPolicy{
-				Name:                   fmt.Sprintf("ns%d-client-%d-fqdn-policy", nsNum, clientNum),
-				Namespace:              namespace.Name,
-				AppLabel:               appLabel,
-				ToPort:                 requestPort,
-				TargetServiceName:      svcName,
-				TargetServiceNamespace: namespace.Name,
+				Name:                fmt.Sprintf("ns%d-client-%d-fqdn-policy", nsNum, clientNum),
+				Namespace:           namespace.Name,
+				AppLabel:            appLabel,
+				ServiceBackendLabel: fmt.Sprint(svcName),
 			}
 			err = yaml.CreateYamlFile(fmt.Sprintf("%s/4-%d-fqdn-allow.yaml", targetDirectory, clientNum), &fqdnPolicy)
 			if err != nil {
@@ -107,6 +117,7 @@ func (g *GenerateYamlsStep) Do(ctx context.Context) error {
 			Name:         fmt.Sprintf("ns%d-toolbox", nsNum),
 			Namespace:    "ns" + fmt.Sprint(nsNum),
 			NodeSelector: "scenario: highcount",
+			AppLabel:     "toolbox",
 			Replicas:     1,
 		}
 		err = yaml.CreateYamlFile(fmt.Sprintf("%s/4-toolbox.yaml", targetDirectory), &toolbox)

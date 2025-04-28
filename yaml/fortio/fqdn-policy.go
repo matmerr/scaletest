@@ -1,13 +1,11 @@
 package fortio
 
 type ClientFQDNPolicy struct {
-	Name                   string
-	Namespace              string
-	TargetPort             string
-	AppLabel               string
-	TargetServiceName      string
-	TargetServiceNamespace string
-	ToPort                 int
+	Name                string
+	Namespace           string
+	TargetPort          string
+	AppLabel            string
+	ServiceBackendLabel string
 }
 
 func (f ClientFQDNPolicy) GetTemplate() string {
@@ -25,14 +23,24 @@ spec:
     matchLabels:
       app: {{ .AppLabel }}
   egress:
-    - toFQDNs:
-        - matchName: {{ .TargetServiceName }}.{{ .TargetServiceNamespace }}.svc.cluster.local
+    - toEndpoints:
+      - matchLabels:
+          k8s:io.kubernetes.pod.namespace: kube-system
+          k8s:k8s-app: node-local-dns
       toPorts:
-        - ports:
-            - port: {{ .ToPort }}
-              protocol: TCP
-  egressDeny:
-    - toEntities:
-        - all
+      - ports:
+        - port: "53"
+          protocol: ANY
+        rules:
+            dns:
+            - matchPattern: '*'
+    - toFQDNs:
+        - matchPattern: '*'
+    - toEndpoints:
+        - matchLabels:
+            svc: {{ .ServiceBackendLabel }}
 
+  ingress:
+  - fromEntities:
+    - all
 `

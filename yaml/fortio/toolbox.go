@@ -5,6 +5,7 @@ type ToolboxDeployment struct {
 	Namespace    string
 	Replicas     int
 	NodeSelector string
+	AppLabel     string
 }
 
 func (f ToolboxDeployment) GetTemplate() string {
@@ -22,10 +23,12 @@ spec:
   selector:
     matchLabels:
       role: toolbox
+      app: {{ .AppLabel }}
   template:
     metadata:
       labels:
         role: toolbox
+        app: {{ .AppLabel }}
     spec:
       nodeSelector:
         {{ .NodeSelector }}

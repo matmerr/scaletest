@@ -5,7 +5,7 @@ type FortioClientDeployment struct {
 	Namespace    string
 	Replicas     int
 	RequestURL   string
-	RequestPort  int
+	RequestPort  string
 	AppLabel     string
 	QPS          string
 	NodeSelector string
@@ -45,6 +45,8 @@ spec:
             - -nocatchup
             - -uniform
             - -sequential-warmup
+            - -connection-reuse 
+            - "1:1"
             - -udp-timeout
             - 1500ms
             - -timeout

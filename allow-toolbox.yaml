@@ -1,0 +1,30 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: ns0-toolbox-to-service-0
+  namespace: ns0
+spec:
+  endpointSelector:
+    matchLabels:
+      app: toolbox
+  egress:
+    - toServices:
+        - k8sService:
+            namespace: ns0
+            serviceName: ns0-service-0
+      toPorts:
+        - ports:
+            - port: "8080"
+              protocol: TCP
+    - toEndpoints:
+        - matchLabels:
+            k8s-app: kube-dns # adjust if CoreDNS uses a different label
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+            - port: "53"
+              protocol: TCP
+  egressDeny:
+    - toEntities:
+        - all
