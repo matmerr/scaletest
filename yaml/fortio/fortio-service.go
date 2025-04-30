@@ -17,6 +17,8 @@ kind: Service
 metadata:
   name: {{ .Name }}
   namespace: {{ .Namespace }}
+  labels:
+    svc: {{ .Name }}
 spec:
   ports:
     - port: {{ .TargetPort }}

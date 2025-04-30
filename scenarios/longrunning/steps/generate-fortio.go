@@ -53,7 +53,6 @@ func (g *GenerateYamlsStep) Do(ctx context.Context) error {
 
 		// create the services in the namespace
 		for svcNum := 0; svcNum < g.ServerServicesPerNamespace; svcNum++ {
-			deployNum := svcNum % g.ServerDeploymentsPerNamespace
 			service := fortio.FortioService{
 				Name:                fmt.Sprintf("ns%d-service-%d", nsNum, svcNum),
 				Namespace:           "ns" + fmt.Sprint(nsNum),
@@ -64,17 +63,6 @@ func (g *GenerateYamlsStep) Do(ctx context.Context) error {
 			err := yaml.CreateYamlFile(fmt.Sprintf("%s/2-%d-service.yaml", targetDirectory, svcNum), &service)
 			if err != nil {
 				return fmt.Errorf("failed to create service yaml file: %w", err)
-			}
-
-			fqdnPolicy := fortio.ClientFQDNPolicy{
-				Name:                     fmt.Sprintf("ns%d-toolbox-to-service-%d-fqdn-policy", nsNum, svcNum),
-				Namespace:                namespace.Name,
-				AppLabelForPolicyToApply: "toolbox",
-				ServiceBackendLabel:      fmt.Sprintf("ns%d-service-%d", nsNum, deployNum),
-			}
-			err = yaml.CreateYamlFile(fmt.Sprintf("%s/4-toolbox-to-service-%d-fqdn-allow.yaml", targetDirectory, svcNum), &fqdnPolicy)
-			if err != nil {
-				return fmt.Errorf("failed to create client fqdn allow yaml file: %w", err)
 			}
 
 		}
@@ -102,12 +90,12 @@ func (g *GenerateYamlsStep) Do(ctx context.Context) error {
 			}
 
 			fqdnPolicy := fortio.ClientFQDNPolicy{
-				Name:                     fmt.Sprintf("ns%d-client-%d-fqdn-policy", nsNum, clientNum),
+				Name:                     fmt.Sprintf("ns%d-client-%d-to-%s", nsNum, clientNum, svcName),
 				Namespace:                namespace.Name,
 				AppLabelForPolicyToApply: appName,
 				ServiceBackendLabel:      fmt.Sprint(svcName),
 			}
-			err = yaml.CreateYamlFile(fmt.Sprintf("%s/4-%d-fqdn-allow.yaml", targetDirectory, clientNum), &fqdnPolicy)
+			err = yaml.CreateYamlFile(fmt.Sprintf("%s/4-%s-fqdn.yaml", targetDirectory, fqdnPolicy.Name), &fqdnPolicy)
 			if err != nil {
 				return fmt.Errorf("failed to create client fqdn allow yaml file: %w", err)
 			}
@@ -123,6 +111,16 @@ func (g *GenerateYamlsStep) Do(ctx context.Context) error {
 		err = yaml.CreateYamlFile(fmt.Sprintf("%s/4-toolbox.yaml", targetDirectory), &toolbox)
 		if err != nil {
 			return fmt.Errorf("failed to create client yaml file: %w", err)
+		}
+
+		fqdnPolicy := fortio.ToolboxFQDNPolicy{
+			Name:                     fmt.Sprintf("ns%d-toolbox-to-all-ns%d-services", nsNum, nsNum),
+			Namespace:                namespace.Name,
+			AppLabelForPolicyToApply: "toolbox",
+		}
+		err = yaml.CreateYamlFile(fmt.Sprintf("%s/4-%s-fqdn.yaml", targetDirectory, fqdnPolicy.Name), &fqdnPolicy)
+		if err != nil {
+			return fmt.Errorf("failed to create client fqdn allow yaml file: %w", err)
 		}
 
 	}

@@ -45,15 +45,18 @@ spec:
         - name: fortio
           args:
             - load
+            - -loglevel
+            - verbose
             - -nocatchup
             - -uniform
+            - -jitter
             - -sequential-warmup
             - -connection-reuse 
-            - "1:1"
+            - "{{ .QPS }}:{{ .QPS }}"
             - -udp-timeout
             - 1500ms
             - -timeout
-            - 30s
+            - 60s
             - -c
             - "{{ .QPS }}"
             - -qps
