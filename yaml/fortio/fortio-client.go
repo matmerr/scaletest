@@ -52,7 +52,7 @@ spec:
             - -jitter
             - -sequential-warmup
             - -connection-reuse 
-            - "{{ .QPS }}:{{ .QPS }}"
+            - "1000:1000"
             - -udp-timeout
             - 1500ms
             - -timeout

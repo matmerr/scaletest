@@ -27,7 +27,7 @@ func LargeScaleWorkflow(yamlDirectory string) *flow.Workflow {
 		ClientDeploymentsPerNamespace: 5,
 		ClientReplicasPerDeployment:   150, // normally 150
 
-		ClientQPS: 1600,
+		ClientQPS: 1500,
 	}
 
 	applyYamls := flow.Func("apply all yamls", func(ctx context.Context) error {
