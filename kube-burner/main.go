@@ -29,7 +29,6 @@ func main() {
 	chartName := "kube-prometheus-stack"
 	repoName := "prometheus-community"
 	repoURL := "https://prometheus-community.github.io/helm-charts"
-	secretName := "prometheus-additional-scrape-configs"
 
 	// Load kubeconfig and create clientset
 	kubeconfigPath := clientcmd.RecommendedHomeFile
@@ -103,12 +102,21 @@ func main() {
 				"evaluationInterval":  "15s",
 				"scrape_interval":     "15s",
 				"evaluation_interval": "15s",
-				"additionalScrapeConfigsSecret": map[string]interface{}{
-					"name": secretName,
-					"key":  "additional.yaml",
-				},
+			},
+			"serviceMonitor": map[string]interface{}{
+				"selfMonitor":               false,
+				"additionalServiceMonitors": []interface{}{},
 			},
 		},
+		"kubeApiServer":         map[string]interface{}{"enabled": false},
+		"kubelet":               map[string]interface{}{"enabled": true},
+		"kubeControllerManager": map[string]interface{}{"enabled": false},
+		"coreDns":               map[string]interface{}{"enabled": false},
+		"kubeEtcd":              map[string]interface{}{"enabled": false},
+		"kubeScheduler":         map[string]interface{}{"enabled": false},
+		"kubeProxy":             map[string]interface{}{"enabled": false},
+		"kubeStateMetrics":      map[string]interface{}{"enabled": false},
+		"prometheusOperator":    map[string]interface{}{"enabled": true, "serviceMonitor": map[string]interface{}{"selfMonitor": false}},
 	}
 
 	// Install or upgrade release
@@ -151,6 +159,7 @@ func main() {
 			Namespace: namespace, // monitoring-2
 			Labels: map[string]string{
 				"k8s-app": "cilium-agent-pods",
+				"release": "prometheus",
 			},
 		},
 		Spec: monitoringv1.PodMonitorSpec{
