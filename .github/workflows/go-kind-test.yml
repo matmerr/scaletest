@@ -15,7 +15,8 @@ on:
 
 jobs:
   test:
-    name: Run Performance Tests
+    name: >-
+      Run Performance Tests (netpol churn job iterations: ${{ github.event.inputs.NETPOL_CHURN_JOB_ITERATIONS }})
     runs-on: ubuntu-latest
 
     steps:
