@@ -22,8 +22,6 @@ metricsEndpoints:
       type: local # Store results locally (can also be "opensearch" or "elastic")
       metricsDirectory: ./output/
 
-# Optionally, you can include other global settings or jobs as needed.
-
 jobs:
   - name: network-policy-perf-pods
     namespace: network-policy-perf

@@ -2,9 +2,10 @@ package steps
 
 import (
 	"context"
-	"log"
+	"log/slog"
 	"os"
 	"path/filepath"
+	"time"
 
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -38,11 +39,13 @@ func (c *InstallPrometheusStep) Do(ctx context.Context) error {
 	kubeconfigPath := clientcmd.RecommendedHomeFile
 	cfg, err := clientcmd.BuildConfigFromFlags("", kubeconfigPath)
 	if err != nil {
-		log.Fatalf("Failed to load kubeconfig: %v", err)
+		slog.Error("Failed to load kubeconfig", "err", err)
+		return err
 	}
 	clientset, err := kubernetes.NewForConfig(cfg)
 	if err != nil {
-		log.Fatalf("Failed to create clientset: %v", err)
+		slog.Error("Failed to create clientset", "err", err)
+		return err
 	}
 
 	// Create namespace if not exists
@@ -52,16 +55,20 @@ func (c *InstallPrometheusStep) Do(ctx context.Context) error {
 			ObjectMeta: metav1.ObjectMeta{Name: namespace},
 		}, metav1.CreateOptions{})
 		if err != nil {
-			log.Fatalf("Failed to create namespace: %v", err)
+			slog.Error("Failed to create namespace", "err", err)
+			return err
 		}
-		log.Printf("Created namespace %s", namespace)
+		slog.Info("Created namespace", "namespace", namespace)
 	}
 
 	// Setup Helm
 	settings := cli.New()
 	actionConfig := new(action.Configuration)
-	if err := actionConfig.Init(genericclioptions.NewConfigFlags(false), namespace, "secrets", log.Printf); err != nil {
-		log.Fatalf("Failed to initialize Helm: %v", err)
+	if err := actionConfig.Init(genericclioptions.NewConfigFlags(false), namespace, "secrets", func(format string, v ...interface{}) {
+		slog.Info("Helm", "msg", format, "args", v)
+	}); err != nil {
+		slog.Error("Failed to initialize Helm", "err", err)
+		return err
 	}
 
 	// Add Helm repo
@@ -70,17 +77,20 @@ func (c *InstallPrometheusStep) Do(ctx context.Context) error {
 	repoFile := repo.NewFile()
 	repoFile.Update(chartRepoEntry)
 	if err := repoFile.WriteFile(repoFilePath, 0644); err != nil {
-		log.Fatalf("Failed to write repo file: %v", err)
+		slog.Error("Failed to write repo file", "err", err)
+		return err
 	}
 
 	chartPathOptions := action.ChartPathOptions{RepoURL: repoURL}
 	chartPath, err := chartPathOptions.LocateChart(chartName, settings)
 	if err != nil {
-		log.Fatalf("Failed to locate chart: %v", err)
+		slog.Error("Failed to locate chart", "err", err)
+		return err
 	}
 	chart, err := loader.Load(chartPath)
 	if err != nil {
-		log.Fatalf("Failed to load chart: %v", err)
+		slog.Error("Failed to load chart", "err", err)
+		return err
 	}
 
 	vals := map[string]interface{}{
@@ -123,7 +133,6 @@ func (c *InstallPrometheusStep) Do(ctx context.Context) error {
 		"prometheusOperator":    map[string]interface{}{"enabled": true, "serviceMonitor": map[string]interface{}{"selfMonitor": false}},
 	}
 
-	// Install or upgrade release
 	histClient := action.NewHistory(actionConfig)
 	histClient.Max = 1
 	_, err = histClient.Run(releaseName)
@@ -134,22 +143,28 @@ func (c *InstallPrometheusStep) Do(ctx context.Context) error {
 		install.ReleaseName = releaseName
 		install.Namespace = namespace
 		install.CreateNamespace = false
+		install.Wait = true
+		install.Timeout = 5 * time.Minute
 
 		rel, err := install.Run(chart, vals)
 		if err != nil {
-			log.Fatalf("Failed to install release: %v", err)
+			slog.Error("Failed to install release", "err", err)
+			return err
 		}
-		log.Printf("Installed release %s", rel.Name)
+		slog.Info("Installed release", "name", rel.Name)
 	} else {
 		// Found, upgrade
 		upgrade := action.NewUpgrade(actionConfig)
 		upgrade.Namespace = namespace
+		upgrade.Wait = true
+		upgrade.Timeout = 5 * time.Minute
 
 		rel, err := upgrade.Run(releaseName, chart, vals)
 		if err != nil {
-			log.Fatalf("Failed to upgrade release: %v", err)
+			slog.Error("Failed to upgrade release", "err", err)
+			return err
 		}
-		log.Printf("Upgraded release %s", rel.Name)
+		slog.Info("Upgraded release", "name", rel.Name)
 	}
 
 	// Define PodMonitor object
@@ -191,7 +206,8 @@ func (c *InstallPrometheusStep) Do(ctx context.Context) error {
 	// Create Prometheus Operator client
 	monClient, err := monitoringclient.NewForConfig(cfg)
 	if err != nil {
-		log.Fatalf("Failed to create monitoring client: %v", err)
+		slog.Error("Failed to create monitoring client", "err", err)
+		return err
 	}
 	_, err = monClient.MonitoringV1().PodMonitors(namespace).Create(context.TODO(), podMonitor, metav1.CreateOptions{})
 	if err != nil {
@@ -199,19 +215,22 @@ func (c *InstallPrometheusStep) Do(ctx context.Context) error {
 			// Get the existing PodMonitor to get its ResourceVersion
 			existing, getErr := monClient.MonitoringV1().PodMonitors(namespace).Get(context.TODO(), podMonitor.Name, metav1.GetOptions{})
 			if getErr != nil {
-				log.Fatalf("Failed to get existing PodMonitor: %v", getErr)
+				slog.Error("Failed to get existing PodMonitor", "err", getErr)
+				return getErr
 			}
 			podMonitor.ResourceVersion = existing.ResourceVersion
 			_, err = monClient.MonitoringV1().PodMonitors(namespace).Update(context.TODO(), podMonitor, metav1.UpdateOptions{})
 			if err != nil {
-				log.Fatalf("Failed to update PodMonitor: %v", err)
+				slog.Error("Failed to update PodMonitor", "err", err)
+				return err
 			}
-			log.Printf("Updated PodMonitor for Cilium agent")
+			slog.Info("Updated PodMonitor for Cilium agent")
 		} else {
-			log.Fatalf("Failed to create PodMonitor: %v", err)
+			slog.Error("Failed to create PodMonitor", "err", err)
+			return err
 		}
 	} else {
-		log.Printf("Created PodMonitor for Cilium agent")
+		slog.Info("Created PodMonitor for Cilium agent")
 	}
 	return nil
 }

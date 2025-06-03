@@ -6,7 +6,7 @@ import (
 
 	flow "github.com/Azure/go-workflow"
 	"github.com/matmerr/scaletest/pkg/yaml"
-	"github.com/matmerr/scaletest/steps"
+	kb "github.com/matmerr/scaletest/workflows/kube-burner/steps"
 )
 
 type CreateYaml struct {
@@ -23,19 +23,19 @@ func (c *CreateYaml) Do(ctx context.Context) error {
 	return nil
 }
 
-func DefaultRun(yamlDirectory yaml.YamlGenerator) *flow.Workflow {
+func RunKubeBurner(yamlDirectory yaml.YamlGenerator) *flow.Workflow {
 	createYaml := &CreateYaml{
 		InputConfig: yamlDirectory,
 	}
 
-	runKubeBurner := &steps.RunKubeBurner{
+	runKubeBurner := &kb.KubeBurner{
 		Namespace: "kube-burner",
 	}
 
 	w := new(flow.Workflow)
 	w.Add(
 		flow.Step(createYaml),
-		flow.Step(runKubeBurner).DependsOn(createYaml).Input(func(ctx context.Context, g *steps.RunKubeBurner) error {
+		flow.Step(runKubeBurner).DependsOn(createYaml).Input(func(ctx context.Context, g *kb.KubeBurner) error {
 			runKubeBurner.ConfigPath = createYaml.OutputConfig
 			return nil
 		}),
