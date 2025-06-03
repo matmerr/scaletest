@@ -19,14 +19,18 @@ type CreateKindCluster struct {
 }
 
 func (s *CreateKindCluster) Do(ctx context.Context) error {
-	slog.Info("Creating kind cluster", "name", s.Name, "note", "Cilium-ready config (via temp file)")
+	name := s.Name
+	if name == "" {
+		name = "kind"
+	}
+	slog.Info("Creating kind cluster", "name", name)
 
 	provider := kindcluster.NewProvider()
 	clusters, err := provider.List()
 	if err == nil {
 		for _, c := range clusters {
-			if c == s.Name {
-				slog.Info("Kind cluster already exists, using existing cluster", "name", s.Name)
+			if c == name {
+				slog.Info("Kind cluster already exists, using existing cluster", "name", name)
 				return nil
 			}
 		}
@@ -63,15 +67,15 @@ func (s *CreateKindCluster) Do(ctx context.Context) error {
 	}
 	tmpFile.Close()
 
-	if err := provider.Create(s.Name, kindcluster.CreateWithConfigFile(tmpFile.Name())); err != nil {
-		if err.Error() == fmt.Sprintf("node(s) already exist for a cluster with the name \"%s\"", s.Name) ||
+	if err := provider.Create(name, kindcluster.CreateWithConfigFile(tmpFile.Name())); err != nil {
+		if err.Error() == fmt.Sprintf("node(s) already exist for a cluster with the name \"%s\"", name) ||
 			// fallback for default cluster name 'kind'
 			(err.Error() == "node(s) already exist for a cluster with the name \"kind\"") {
-			slog.Info("Kind cluster already exists (detected by error), using existing cluster", "name", s.Name)
+			slog.Info("Kind cluster already exists (detected by error), using existing cluster", "name", name)
 			return nil
 		}
 		return fmt.Errorf("failed to create kind cluster: %w", err)
 	}
-	slog.Info("Kind cluster created", "name", s.Name)
+	slog.Info("Kind cluster created", "name", name)
 	return nil
 }

@@ -3,3 +3,4 @@ output/*
 **/scenarios/**/output/*.json
 **debug_bin**
 **.log
+tools/bin/*

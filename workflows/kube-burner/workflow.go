@@ -43,3 +43,12 @@ func RunKubeBurner(yamlDirectory yaml.YamlGenerator) *flow.Workflow {
 
 	return w
 }
+
+func InstallKubeBurner() *flow.Workflow {
+	w := new(flow.Workflow)
+	w.Add(
+		flow.Step(&kb.InstallKubeBurner{}),
+	)
+
+	return w
+}

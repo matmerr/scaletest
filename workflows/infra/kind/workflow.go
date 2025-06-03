@@ -17,3 +17,14 @@ func RunDeployKind() *flow.Workflow {
 
 	return w
 }
+
+func RunInstallKind() *flow.Workflow {
+	w := new(flow.Workflow)
+	w.Add(
+		flow.Pipe(
+			&kindsteps.InstallKindStep{},
+		),
+	)
+
+	return w
+}

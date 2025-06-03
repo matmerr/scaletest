@@ -14,13 +14,19 @@ type KubeBurner struct {
 }
 
 func (c *KubeBurner) Do(ctx context.Context) error {
+	// Always use absolute path for the kube-burner binary
+	binPath, err := filepath.Abs(filepath.Join("tools", "bin", "kube-burner"))
+	if err != nil {
+		slog.Error("Failed to get absolute path for kube-burner binary", "err", err)
+		return err
+	}
 	cmdArgs := []string{
 		"init",
 		"--config", filepath.Base(c.ConfigPath),
 	}
 
-	slog.Info("Running command", "cmd", "kube-burner", "args", cmdArgs)
-	cmd := exec.CommandContext(ctx, "kube-burner", cmdArgs...)
+	slog.Info("Running command", "cmd", binPath, "args", cmdArgs)
+	cmd := exec.CommandContext(ctx, binPath, cmdArgs...)
 	cmd.Dir = filepath.Dir(c.ConfigPath)
 	cmd.Stderr = os.Stderr
 	cmd.Stdout = os.Stdout

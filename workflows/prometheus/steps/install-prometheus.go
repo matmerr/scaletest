@@ -2,6 +2,7 @@ package steps
 
 import (
 	"context"
+	"fmt"
 	"log/slog"
 	"os"
 	"path/filepath"
@@ -65,7 +66,12 @@ func (c *InstallPrometheusStep) Do(ctx context.Context) error {
 	settings := cli.New()
 	actionConfig := new(action.Configuration)
 	if err := actionConfig.Init(genericclioptions.NewConfigFlags(false), namespace, "secrets", func(format string, v ...interface{}) {
-		slog.Info("Helm", "msg", format, "args", v)
+		// Instead of format string, use structured logging
+		if len(v) > 0 {
+			slog.Info("Helm", "msg", fmt.Sprintf(format, v...))
+		} else {
+			slog.Info("Helm", "msg", format)
+		}
 	}); err != nil {
 		slog.Error("Failed to initialize Helm", "err", err)
 		return err
