@@ -1,7 +1,9 @@
 package netpolchurn
 
 type Config struct {
-	MetricsDirectory string
+	MetricsConfigDirectory string
+	ResultsDirectory       string
+	TemplateDirectory      string
 }
 
 func (f Config) GetTemplate() string {
@@ -14,10 +16,10 @@ metricsEndpoints:
     step: 30s # Scrape interval (optional, default is 30s)
     skipTLSVerify: true # Skip TLS certificate verification (optional)
     metrics:
-      - metrics-cilium.yaml # Reference to your custom metrics profile file
+      - {{ .MetricsConfigDirectory }}/metrics-cilium.yaml # Reference to your custom metrics profile file
     indexer:
       type: local # Store results locally (can also be "opensearch" or "elastic")
-      metricsDirectory: {{ .MetricsDirectory }} # Directory to store metric results (for local indexer)
+      metricsDirectory: {{ .ResultsDirectory }} # Directory to store metric results (for local indexer)
 
 # Optionally, you can include other global settings or jobs as needed.
 
@@ -40,13 +42,13 @@ jobs:
       pod-security.kubernetes.io/audit: privileged
       pod-security.kubernetes.io/warn: privileged
     objects:
-      - objectTemplate: templates/pod.yml
+      - objectTemplate: {{ .TemplateDirectory }}/pod.yml
         replicas: 2
 
-      - objectTemplate: templates/np-deny-all.yml
+      - objectTemplate: {{ .TemplateDirectory }}/np-deny-all.yml
         replicas: 1
 
-      - objectTemplate: templates/np-allow-from-proxy.yml
+      - objectTemplate: {{ .TemplateDirectory }}/np-allow-from-proxy.yml
         replicas: 1
 
   - name: network-policy-perf
@@ -67,7 +69,7 @@ jobs:
       pod-security.kubernetes.io/audit: privileged
       pod-security.kubernetes.io/warn: privileged
     objects:
-      - objectTemplate: templates/ingress-np.yml
+      - objectTemplate: {{ .TemplateDirectory }}/ingress-np.yml
         replicas: 1
         inputVars:
           namespaces: 9

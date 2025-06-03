@@ -4,11 +4,14 @@ import (
 	"context"
 	"fmt"
 	"os/exec"
+
+	"github.com/matmerr/scaletest/pkg/yaml"
 )
 
 type RunKubeBurner struct {
 	Namespace  string
-	ConfigPath string
+	ConfigPath string // Path to the kube-burner config file
+	Template   yaml.YamlGenerator
 }
 
 func (c *RunKubeBurner) Do(ctx context.Context) error {
@@ -21,13 +24,13 @@ func (c *RunKubeBurner) Do(ctx context.Context) error {
 		"--config", c.ConfigPath, // adjust field name as needed
 	}
 
-	fmt.Printf("Running command: kubeburner %v\n", cmdArgs)
-	cmd := exec.CommandContext(ctx, "kubeburner", cmdArgs...)
+	fmt.Printf("Running command: kube-burner %v\n", cmdArgs)
+	cmd := exec.CommandContext(ctx, "kube-burner", cmdArgs...)
 	cmd.Stdout = nil
 	cmd.Stderr = nil
 
 	if err := cmd.Run(); err != nil {
-		return fmt.Errorf("failed to run kubeburner: %w", err)
+		return fmt.Errorf("failed to run kube-burner: %w", err)
 	}
 
 	return nil

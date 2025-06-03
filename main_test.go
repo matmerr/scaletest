@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	flow "github.com/Azure/go-workflow"
-	"github.com/matmerr/scaletest/scenarios"
+	scenarios "github.com/matmerr/scaletest/workflows"
 )
 
 type Welcome struct {
