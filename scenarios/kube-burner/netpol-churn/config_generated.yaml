@@ -12,7 +12,7 @@ metricsEndpoints:
 jobs:
   - name: network-policy-perf-pods
     namespace: network-policy-perf
-    jobIterations: 9
+    jobIterations: 5
     qps: 20
     burst: 20
     namespacedIterations: true

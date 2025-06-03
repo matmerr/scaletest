@@ -20,7 +20,7 @@ func RunConfigurePrometheus() *flow.Workflow {
 				LabelSelector:      "app.kubernetes.io/name=prometheus",
 				LocalPort:          "9090",
 				RemotePort:         "9090",
-				Endpoint:           "http://localhost:9090",
+				Endpoint:           "http://localhost:9090/metrics",
 				KubeConfigFilePath: clientcmd.RecommendedHomeFile,
 			},
 		),
