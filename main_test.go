@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	flow "github.com/Azure/go-workflow"
+	netpolchurn "github.com/matmerr/scaletest/scenarios/kube-burner/netpol-churn"
 	scenarios "github.com/matmerr/scaletest/workflows"
 )
 
@@ -22,7 +23,7 @@ func TestWorkflow(t *testing.T) {
 	root := new(flow.Workflow).Add(
 		flow.Pipe(
 			new(Welcome),
-			scenarios.DefaultRun("testdata/yaml/longrunning"),
+			scenarios.DefaultRun(netpolchurn.NewNetpolChurnConfig()),
 		),
 	)
 

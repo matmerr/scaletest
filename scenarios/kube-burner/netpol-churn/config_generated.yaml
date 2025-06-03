@@ -1,17 +1,4 @@
-package netpolchurn
 
-func NewNetpolChurnConfig() Config {
-	return Config{}
-}
-
-type Config struct {
-}
-
-func (f Config) GetTemplate() string {
-	return configTemplate
-}
-
-const configTemplate = `
 metricsEndpoints:
   - endpoint: http://localhost:9090 # URL to your Prometheus server
     step: 30s # Scrape interval (optional, default is 30s)
@@ -84,4 +71,3 @@ jobs:
           peer_pods: 2
           cidr_rules: 1
 
-`
