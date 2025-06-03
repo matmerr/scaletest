@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	flow "github.com/Azure/go-workflow"
-	"github.com/matmerr/scaletest/scenarios/longrunning"
+	"github.com/matmerr/scaletest/scenarios"
 )
 
 type Welcome struct {
@@ -22,7 +22,7 @@ func TestWorkflow(t *testing.T) {
 	root := new(flow.Workflow).Add(
 		flow.Pipe(
 			new(Welcome),
-			longrunning.LargeScaleWorkflow("./output"),
+			scenarios.DefaultRun("testdata/yaml/longrunning"),
 		),
 	)
 

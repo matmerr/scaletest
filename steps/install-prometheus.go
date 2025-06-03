@@ -1,4 +1,4 @@
-package main
+package steps
 
 import (
 	"context"
@@ -23,7 +23,11 @@ import (
 	k8serrors "k8s.io/apimachinery/pkg/api/errors"
 )
 
-func main() {
+type InstallPrometheusStep struct {
+	Namespace string
+}
+
+func (c *InstallPrometheusStep) Do(ctx context.Context) error {
 	namespace := "monitoring-2"
 	releaseName := "prometheus"
 	chartName := "kube-prometheus-stack"
@@ -109,7 +113,7 @@ func main() {
 			},
 		},
 		"kubeApiServer":         map[string]interface{}{"enabled": false},
-		"kubelet":               map[string]interface{}{"enabled": true},
+		"kubelet":               map[string]interface{}{"enabled": false},
 		"kubeControllerManager": map[string]interface{}{"enabled": false},
 		"coreDns":               map[string]interface{}{"enabled": false},
 		"kubeEtcd":              map[string]interface{}{"enabled": false},
@@ -209,6 +213,7 @@ func main() {
 	} else {
 		log.Printf("Created PodMonitor for Cilium agent")
 	}
+	return nil
 }
 
 // Helper function to convert string to *string

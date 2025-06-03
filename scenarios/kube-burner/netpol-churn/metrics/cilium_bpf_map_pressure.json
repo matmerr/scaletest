@@ -1,0 +1,3170 @@
+[
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.10:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-j9cdm"
+        },
+        "value": 0.021516095867457848,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.10:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-j9cdm"
+        },
+        "value": 0.005638371953820655,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.10:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-j9cdm"
+        },
+        "value": 0.000220703125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.10:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-j9cdm"
+        },
+        "value": 0.000274658203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.10:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-j9cdm"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.10:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-j9cdm"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.10:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-j9cdm"
+        },
+        "value": 0.00016784924086366064,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.11:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-kjgk5"
+        },
+        "value": 0.00544910313419328,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.11:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-kjgk5"
+        },
+        "value": 0.0015942226920865517,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.11:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-kjgk5"
+        },
+        "value": 0.00019921875,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.11:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-kjgk5"
+        },
+        "value": 0.0002899169921875,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.11:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-kjgk5"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.11:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-kjgk5"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.11:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-kjgk5"
+        },
+        "value": 0.00006103608758678569,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.11:9962",
+            "job": "cilium",
+            "map_name": "snat_v4_external",
+            "namespace": "kube-system",
+            "pod": "cilium-kjgk5"
+        },
+        "value": 0.000035408421387192356,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.12:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-j58rq"
+        },
+        "value": 0.012646707838792202,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.12:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-j58rq"
+        },
+        "value": 0.0035273547031677063,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.12:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-j58rq"
+        },
+        "value": 0.000220703125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.12:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-j58rq"
+        },
+        "value": 0.0003204345703125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.12:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-j58rq"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.12:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-j58rq"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.12:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-j58rq"
+        },
+        "value": 0.00006103608758678569,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.13:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-5psq9"
+        },
+        "value": 0.008197471079961067,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.13:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-5psq9"
+        },
+        "value": 0.002158228499070107,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.13:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-5psq9"
+        },
+        "value": 0.0001953125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.13:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-5psq9"
+        },
+        "value": 0.000335693359375,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.13:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-5psq9"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.13:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-5psq9"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.13:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-5psq9"
+        },
+        "value": 0.00006103608758678569,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.14:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-phr7t"
+        },
+        "value": 0.0016220429225942401,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.14:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-phr7t"
+        },
+        "value": 0.00022593954599640182,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.14:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-phr7t"
+        },
+        "value": 0.0002109375,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.14:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-phr7t"
+        },
+        "value": 0.00018310546875,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.14:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-phr7t"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.14:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-phr7t"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.14:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-phr7t"
+        },
+        "value": 0.00006103608758678569,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.14:9962",
+            "job": "cilium",
+            "map_name": "snat_v4_external",
+            "namespace": "kube-system",
+            "pod": "cilium-phr7t"
+        },
+        "value": 0.0000404667672996484,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.15:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-8khq4"
+        },
+        "value": 0.012622259166881998,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.15:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-8khq4"
+        },
+        "value": 0.003099081235383482,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.15:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-8khq4"
+        },
+        "value": 0.000193359375,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.15:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-8khq4"
+        },
+        "value": 0.00030517578125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.15:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-8khq4"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.15:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-8khq4"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.15:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-8khq4"
+        },
+        "value": 0.00006103608758678569,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.16:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-wmbm4"
+        },
+        "value": 0.0007735053957797377,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.16:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-wmbm4"
+        },
+        "value": 0.00027483691042845895,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.16:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-wmbm4"
+        },
+        "value": 0.000197265625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.16:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-wmbm4"
+        },
+        "value": 0.0001068115234375,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.16:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-wmbm4"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.16:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-wmbm4"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.16:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-wmbm4"
+        },
+        "value": 0.00009155413138017853,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.17:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-zxbm6"
+        },
+        "value": 0.036856794433458934,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.17:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-zxbm6"
+        },
+        "value": 0.014095929884551637,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.17:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-zxbm6"
+        },
+        "value": 0.0001953125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.17:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-zxbm6"
+        },
+        "value": 0.0002288818359375,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.17:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-zxbm6"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.17:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-zxbm6"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.17:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-zxbm6"
+        },
+        "value": 0.00039673456931410697,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.17:9962",
+            "job": "cilium",
+            "map_name": "snat_v4_external",
+            "namespace": "kube-system",
+            "pod": "cilium-zxbm6"
+        },
+        "value": 0.00029001183231414687,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.18:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-tn4fl"
+        },
+        "value": 0.008154475139705191,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.18:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-tn4fl"
+        },
+        "value": 0.0022104980955319612,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.18:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-tn4fl"
+        },
+        "value": 0.000220703125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.18:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-tn4fl"
+        },
+        "value": 0.000213623046875,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.18:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-tn4fl"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.18:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-tn4fl"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.18:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-tn4fl"
+        },
+        "value": 0.00006103608758678569,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.19:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-8r7hl"
+        },
+        "value": 0.012560294429454411,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.19:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-8r7hl"
+        },
+        "value": 0.002675866115643953,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.19:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-8r7hl"
+        },
+        "value": 0.000197265625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.19:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-8r7hl"
+        },
+        "value": 0.0001983642578125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.19:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-8r7hl"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.19:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-8r7hl"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.19:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-8r7hl"
+        },
+        "value": 0.00006103608758678569,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.20:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-q74ng"
+        },
+        "value": 0.004137726956389049,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.20:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-q74ng"
+        },
+        "value": 0.0010512933352892278,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.20:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-q74ng"
+        },
+        "value": 0.000193359375,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.20:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-q74ng"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.20:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-q74ng"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.20:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-q74ng"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.20:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-q74ng"
+        },
+        "value": 0.00006103608758678569,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.20:9962",
+            "job": "cilium",
+            "map_name": "snat_v4_external",
+            "namespace": "kube-system",
+            "pod": "cilium-q74ng"
+        },
+        "value": 0.000035408421387192356,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.21:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-kqph4"
+        },
+        "value": 0.01252446447924118,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.21:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-kqph4"
+        },
+        "value": 0.0027492121622920388,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.21:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-kqph4"
+        },
+        "value": 0.00019140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.21:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-kqph4"
+        },
+        "value": 0.0002593994140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.21:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-kqph4"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.21:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-kqph4"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:21.855Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.21:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-kqph4"
+        },
+        "value": 0.00006103608758678569,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.16:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-wmbm4"
+        },
+        "value": 0.0007735053957797377,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.16:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-wmbm4"
+        },
+        "value": 0.00027483691042845895,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.16:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-wmbm4"
+        },
+        "value": 0.000197265625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.16:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-wmbm4"
+        },
+        "value": 0.0001068115234375,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.16:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-wmbm4"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.16:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-wmbm4"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.16:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-wmbm4"
+        },
+        "value": 0.00009155413138017853,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.11:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-kjgk5"
+        },
+        "value": 0.00544910313419328,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.11:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-kjgk5"
+        },
+        "value": 0.0015942226920865517,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.11:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-kjgk5"
+        },
+        "value": 0.00019921875,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.11:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-kjgk5"
+        },
+        "value": 0.0002899169921875,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.11:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-kjgk5"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.11:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-kjgk5"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.11:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-kjgk5"
+        },
+        "value": 0.00006103608758678569,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.11:9962",
+            "job": "cilium",
+            "map_name": "snat_v4_external",
+            "namespace": "kube-system",
+            "pod": "cilium-kjgk5"
+        },
+        "value": 0.000035408421387192356,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.14:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-phr7t"
+        },
+        "value": 0.0016220429225942401,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.14:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-phr7t"
+        },
+        "value": 0.00022593954599640182,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.14:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-phr7t"
+        },
+        "value": 0.0002109375,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.14:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-phr7t"
+        },
+        "value": 0.00018310546875,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.14:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-phr7t"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.14:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-phr7t"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.14:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-phr7t"
+        },
+        "value": 0.00006103608758678569,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.14:9962",
+            "job": "cilium",
+            "map_name": "snat_v4_external",
+            "namespace": "kube-system",
+            "pod": "cilium-phr7t"
+        },
+        "value": 0.0000404667672996484,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.10:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-j9cdm"
+        },
+        "value": 0.021560777923017877,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.10:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-j9cdm"
+        },
+        "value": 0.005711718000468741,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.10:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-j9cdm"
+        },
+        "value": 0.00021875,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.10:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-j9cdm"
+        },
+        "value": 0.000274658203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.10:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-j9cdm"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.10:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-j9cdm"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.10:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-j9cdm"
+        },
+        "value": 0.00044251163500419623,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.12:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-j58rq"
+        },
+        "value": 0.012659353703573342,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.12:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-j58rq"
+        },
+        "value": 0.003535785283242199,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.12:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-j58rq"
+        },
+        "value": 0.00021875,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.12:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-j58rq"
+        },
+        "value": 0.0003204345703125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.12:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-j58rq"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.12:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-j58rq"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.12:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-j58rq"
+        },
+        "value": 0.00006103608758678569,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.18:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-tn4fl"
+        },
+        "value": 0.008162484187399913,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.18:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-tn4fl"
+        },
+        "value": 0.0022104980955319612,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.18:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-tn4fl"
+        },
+        "value": 0.00021875,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.18:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-tn4fl"
+        },
+        "value": 0.000213623046875,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.18:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-tn4fl"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.18:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-tn4fl"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.18:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-tn4fl"
+        },
+        "value": 0.00006103608758678569,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.21:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-kqph4"
+        },
+        "value": 0.012533316584587978,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.21:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-kqph4"
+        },
+        "value": 0.0027492121622920388,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.21:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-kqph4"
+        },
+        "value": 0.00021875,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.21:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-kqph4"
+        },
+        "value": 0.0002593994140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.21:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-kqph4"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.21:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-kqph4"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.21:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-kqph4"
+        },
+        "value": 0.00006103608758678569,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.15:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-8khq4"
+        },
+        "value": 0.012622259166881998,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.15:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-8khq4"
+        },
+        "value": 0.003099081235383482,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.15:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-8khq4"
+        },
+        "value": 0.000193359375,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.15:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-8khq4"
+        },
+        "value": 0.00030517578125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.15:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-8khq4"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.15:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-8khq4"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.15:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-8khq4"
+        },
+        "value": 0.00006103608758678569,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.20:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-q74ng"
+        },
+        "value": 0.004137726956389049,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.20:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-q74ng"
+        },
+        "value": 0.0010512933352892278,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.20:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-q74ng"
+        },
+        "value": 0.000193359375,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.20:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-q74ng"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.20:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-q74ng"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.20:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-q74ng"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.20:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-q74ng"
+        },
+        "value": 0.00006103608758678569,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.20:9962",
+            "job": "cilium",
+            "map_name": "snat_v4_external",
+            "namespace": "kube-system",
+            "pod": "cilium-q74ng"
+        },
+        "value": 0.000035408421387192356,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.17:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-zxbm6"
+        },
+        "value": 0.036856794433458934,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.17:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-zxbm6"
+        },
+        "value": 0.014095929884551637,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.17:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-zxbm6"
+        },
+        "value": 0.0001953125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.17:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-zxbm6"
+        },
+        "value": 0.0002288818359375,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.17:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-zxbm6"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.17:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-zxbm6"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.17:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-zxbm6"
+        },
+        "value": 0.00039673456931410697,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.17:9962",
+            "job": "cilium",
+            "map_name": "snat_v4_external",
+            "namespace": "kube-system",
+            "pod": "cilium-zxbm6"
+        },
+        "value": 0.00029001183231414687,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.13:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-5psq9"
+        },
+        "value": 0.008197471079961067,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.13:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-5psq9"
+        },
+        "value": 0.002158228499070107,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.13:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-5psq9"
+        },
+        "value": 0.0001953125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.13:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-5psq9"
+        },
+        "value": 0.000335693359375,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.13:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-5psq9"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.13:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-5psq9"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.13:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-5psq9"
+        },
+        "value": 0.00006103608758678569,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.19:9962",
+            "job": "cilium",
+            "map_name": "ct4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-8r7hl"
+        },
+        "value": 0.012560294429454411,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.19:9962",
+            "job": "cilium",
+            "map_name": "ct_any4_global",
+            "namespace": "kube-system",
+            "pod": "cilium-8r7hl"
+        },
+        "value": 0.002675866115643953,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.19:9962",
+            "job": "cilium",
+            "map_name": "ipcache",
+            "namespace": "kube-system",
+            "pod": "cilium-8r7hl"
+        },
+        "value": 0.000197265625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.19:9962",
+            "job": "cilium",
+            "map_name": "lb4_backends_v3",
+            "namespace": "kube-system",
+            "pod": "cilium-8r7hl"
+        },
+        "value": 0.0001983642578125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.19:9962",
+            "job": "cilium",
+            "map_name": "lb4_reverse_nat",
+            "namespace": "kube-system",
+            "pod": "cilium-8r7hl"
+        },
+        "value": 0.000244140625,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.19:9962",
+            "job": "cilium",
+            "map_name": "lb4_services_v2",
+            "namespace": "kube-system",
+            "pod": "cilium-8r7hl"
+        },
+        "value": 0.0008087158203125,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    },
+    {
+        "timestamp": "2025-06-02T23:36:37.205Z",
+        "labels": {
+            "container": "cilium-agent",
+            "endpoint": "prometheus",
+            "instance": "10.0.0.19:9962",
+            "job": "cilium",
+            "map_name": "lxc",
+            "namespace": "kube-system",
+            "pod": "cilium-8r7hl"
+        },
+        "value": 0.00006103608758678569,
+        "uuid": "09bcdcf0-6ec6-4823-8a2b-2e80292d972a",
+        "query": "cilium_bpf_map_pressure",
+        "metricName": "cilium_bpf_map_pressure",
+        "jobName": "network-policy-perf",
+        "metadata": null
+    }
+]
