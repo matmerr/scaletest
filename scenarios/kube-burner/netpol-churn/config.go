@@ -1,10 +1,27 @@
 package netpolchurn
 
+import (
+	"os"
+	"strconv"
+)
+
 func NewNetpolChurnConfig() Config {
-	return Config{}
+	jobIterationsStr := os.Getenv("NETPOL_CHURN_JOB_ITERATIONS")
+	jobIterations := 5
+
+	if jobIterationsStr != "" {
+		if val, err := strconv.Atoi(jobIterationsStr); err == nil {
+			jobIterations = val
+		}
+	}
+
+	return Config{
+		JobIterations: jobIterations,
+	}
 }
 
 type Config struct {
+	JobIterations int `yaml:"jobIterations,omitempty"` // Number of iterations for each job
 }
 
 func (f Config) GetTemplate() string {
@@ -25,7 +42,7 @@ metricsEndpoints:
 jobs:
   - name: network-policy-perf-pods
     namespace: network-policy-perf
-    jobIterations: 9
+    jobIterations: {{ .JobIterations }}
     qps: 20
     burst: 20
     namespacedIterations: true
