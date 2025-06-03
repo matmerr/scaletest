@@ -69,6 +69,10 @@ func (c *InstallCiliumStep) Do(ctx context.Context) error {
 			"enabled":        true,
 			"serviceMonitor": map[string]interface{}{"enabled": true},
 		},
+		"prometheus": map[string]interface{}{
+			"enabled": true,
+			"port":    9962,
+		},
 		// Add or adjust more values as needed for kind compatibility
 	}
 

@@ -15,6 +15,8 @@ func RunConfigurePrometheus() *flow.Workflow {
 			&promsteps.InstallPrometheusStep{
 				Namespace: "monitoring-2",
 			},
+			&promsteps.InstallCiliumPodMonitorStep{},
+			&promsteps.InstallHubblePodMonitorStep{},
 			&utils.PortForward{
 				Namespace:          "monitoring-2",
 				LabelSelector:      "app.kubernetes.io/name=prometheus",
