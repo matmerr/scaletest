@@ -11,6 +11,7 @@ import (
 	"github.com/matmerr/scaletest/scenarios"
 	kind "github.com/matmerr/scaletest/workflows/infra/kind"
 	kb "github.com/matmerr/scaletest/workflows/kube-burner"
+	prom "github.com/matmerr/scaletest/workflows/prometheus"
 	"github.com/matmerr/scaletest/workflows/welcome"
 )
 
@@ -19,6 +20,7 @@ func TestWorkflow(t *testing.T) {
 	setup := flow.Pipe(
 		kb.InstallKubeBurner(),
 		kind.RunInstallKind(),
+		prom.RunConfigurePrometheus(),
 		new(welcome.Intro),
 	)
 
