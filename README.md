@@ -4,6 +4,18 @@
 
 This project automates the deployment and benchmarking of Kubernetes clusters using kind, Cilium, Prometheus, and kube-burner. It is designed for robust, repeatable, and CI-friendly performance testing and metrics collection.
 
+## Project Layout
+
+- `main.go`: Lists all available scenarios from `scenarios.Index` (for discovery/documentation only)
+- `main_test.go`: End-to-end test workflow using Azure/go-workflow
+- `scenarios/scenarios.go`: Canonical scenario registry (`scenarios.Index`)
+- `scenarios/kube-burner/`: Scenario implementations (each in its own subdirectory)
+- `workflows/`: Modular workflow steps and orchestration (kind, kube-burner, prometheus, etc.)
+- `pkg/`: Utilities and shared code (e.g., YAML helpers, port-forwarding)
+- `tools/bin/`: Downloaded binaries (kind, kube-burner)
+- `Makefile`: Build and codegen targets
+- `.github/workflows/`: CI workflows
+
 ## Usage
 
 ### Prerequisites
@@ -17,7 +29,15 @@ To generate scenario YAML files for all registered scenarios:
 ```sh
 make generate
 ```
-This will run `go generate ./...` and invoke the scenario YAML generation logic for all scenarios listed in `main.go`.
+This runs `go test ./tools -run TestGenerate` and invokes the scenario YAML generation logic for all scenarios listed in `scenarios.Index` (see `scenarios/scenarios.go`).
+
+### Downloading Tools
+To download required binaries (kind, kube-burner):
+
+```sh
+make tools
+```
+This runs `go test ./tools -run TestDownloadTools` to ensure all required tools are present in `tools/bin/`.
 
 ### Running the Full Workflow
 To run the full test workflow (including cluster setup, Prometheus, Cilium, kube-burner, etc.):
@@ -25,7 +45,7 @@ To run the full test workflow (including cluster setup, Prometheus, Cilium, kube
 ```sh
 go test -v
 ```
-This will execute the `TestWorkflow` in `main_test.go`, which runs the entire flow end-to-end.
+This will execute the `TestWorkflow` in `main_test.go`, which runs the entire flow end-to-end. Other tests (e.g., in `tools/`) are for codegen and tool download only.
 
 ## Adding New Scenarios
 
@@ -35,13 +55,13 @@ This will execute the `TestWorkflow` in `main_test.go`, which runs the entire fl
    - Provide any supporting files (templates, metrics, etc.) in your scenario directory.
 
 2. **Register your scenario**
-   - Open `main.go`.
+   - Open `scenarios/scenarios.go`.
    - Import your scenario package.
-   - Add your scenario to the `scenarios` slice, e.g.:
+   - Add your scenario to the `Index` slice, e.g.:
      ```go
      import yourscenario "github.com/matmerr/scaletest/scenarios/kube-burner/your-scenario"
      // ...
-     var scenarios = []yaml.Template{
+     var Index = []yaml.Template{
          netpolchurn.NewNetpolChurnConfig(),
          apiintensive.NewApiIntensiveConfig(),
          yourscenario.NewYourScenarioConfig(),
@@ -69,7 +89,7 @@ This will execute the `TestWorkflow` in `main_test.go`, which runs the entire fl
    - Logs and errors are available for debugging.
 
 ## Troubleshooting
-- If you see errors about missing scenarios, ensure your scenario is registered in `main.go`.
+- If you see errors about missing scenarios, ensure your scenario is registered in `scenarios/scenarios.go` (`Index`).
 - If kube-burner fails with object verification errors, check your scenario YAML and cluster state.
 - For CI integration, see `.github/workflows/go-kind-test.yml`.
 

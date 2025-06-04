@@ -3,8 +3,8 @@
 .PHONY: generate
 generate:
 	@echo "Generating scenario YAMLs using go generate..."
-	go test -run TestGenerate
+	go test ./tools -run TestGenerate
 
 .PHONY: tools
 tools: 
-	go test -run TestDownloadTools
+	go test ./tools -run TestDownloadTools

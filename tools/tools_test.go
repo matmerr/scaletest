@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	flow "github.com/Azure/go-workflow"
+	scenarios "github.com/matmerr/scaletest/scenarios"
 	kind "github.com/matmerr/scaletest/workflows/infra/kind"
 	kb "github.com/matmerr/scaletest/workflows/kube-burner"
 )
@@ -12,8 +13,8 @@ import (
 func TestGenerate(t *testing.T) {
 	root := new(flow.Workflow)
 
-	steps := make([]flow.Steper, 0, len(scenarios))
-	for _, scenario := range scenarios {
+	steps := make([]flow.Steper, 0, len(scenarios.Index))
+	for _, scenario := range scenarios.Index {
 		steps = append(steps, kb.GenerateYaml(scenario))
 	}
 

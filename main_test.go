@@ -2,9 +2,13 @@ package main
 
 import (
 	"context"
+	"log/slog"
+	"path/filepath"
+	"reflect"
 	"testing"
 
 	flow "github.com/Azure/go-workflow"
+	"github.com/matmerr/scaletest/scenarios"
 	kind "github.com/matmerr/scaletest/workflows/infra/kind"
 	kb "github.com/matmerr/scaletest/workflows/kube-burner"
 	"github.com/matmerr/scaletest/workflows/welcome"
@@ -18,9 +22,16 @@ func TestWorkflow(t *testing.T) {
 		new(welcome.Intro),
 	)
 
+	// print all scenario names to console
+	for _, scenario := range scenarios.Index {
+		t := reflect.TypeOf(scenario)
+		pkgPath := filepath.Base(t.PkgPath())
+		slog.Info("Scenario", slog.String("name", pkgPath), slog.String("path", t.PkgPath()))
+	}
+
 	// Scenario steps (run kube-burner for each scenario)
-	scenarioSteps := make([]flow.Steper, 0, len(Scenarios))
-	for _, scenario := range Scenarios {
+	scenarioSteps := make([]flow.Steper, 0, len(scenarios.Index))
+	for _, scenario := range scenarios.Index {
 		scenarioSteps = append(scenarioSteps, kb.RunKubeBurner(scenario))
 	}
 

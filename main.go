@@ -1,13 +1,19 @@
 package main
 
 import (
-	"github.com/matmerr/scaletest/pkg/yaml"
-	apiintensive "github.com/matmerr/scaletest/scenarios/kube-burner/api-intensive"
-	netpolchurn "github.com/matmerr/scaletest/scenarios/kube-burner/netpol-churn"
+	"log/slog"
+	"path/filepath"
+	"reflect"
+
+	"github.com/matmerr/scaletest/scenarios"
 )
 
-// Add all kubeburner scenarios here
-var Scenarios = []yaml.Template{
-	netpolchurn.NewNetpolChurnConfig(),
-	apiintensive.NewApiIntensiveConfig(),
+func main() {
+	slog.Info("List of All Available Scenarios")
+	// all current scenarios in scenarios.Index
+	for _, scenario := range scenarios.Index {
+		t := reflect.TypeOf(scenario)
+		pkgPath := filepath.Base(t.PkgPath())
+		slog.Info("Scenario", slog.String("name", pkgPath), slog.String("path", t.PkgPath()))
+	}
 }
