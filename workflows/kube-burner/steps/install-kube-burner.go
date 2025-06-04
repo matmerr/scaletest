@@ -71,8 +71,6 @@ func (s *InstallKubeBurner) Do(ctx context.Context) error {
 	// Remove the kube-burner tar.gz after extracting the binary
 	if err := os.Remove(tmpTar); err != nil && !os.IsNotExist(err) {
 		slog.Warn("Failed to remove kube-burner.tar.gz after extraction", "path", tmpTar, "err", err)
-	} else {
-		slog.Info("Removed kube-burner.tar.gz after extraction", "path", tmpTar)
 	}
 	return nil
 }
@@ -110,7 +108,6 @@ func extractKubeBurnerBinary(tarPath, binPath string) error {
 				slog.Error("Failed to extract kube-burner binary", "err", err)
 				return err
 			}
-			slog.Info("Extracted kube-burner binary", "path", binPath)
 			return nil
 		}
 	}

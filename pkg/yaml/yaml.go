@@ -9,17 +9,15 @@ import (
 	"github.com/matmerr/scaletest/pkg/utils"
 )
 
-type YamlGenerator interface {
+type Template interface {
 	GetTemplate() string
 }
 
-func CreateYamlFile(data YamlGenerator) (string, error) {
+func CreateYamlFile(data Template) (string, error) {
 	relPath, err := utils.GetPackagePath(data)
 	if err != nil {
 		return "", fmt.Errorf("failed to get package path: %w", err)
 	}
-
-	fmt.Println(relPath)
 
 	outputConfig := relPath + "/config_generated.yaml"
 
@@ -47,10 +45,16 @@ func CreateYamlFile(data YamlGenerator) (string, error) {
 	}
 	defer file.Close()
 
-	// Execute the template with the data and write to standard output
+	_, err = file.WriteString("# This file was generated from the corresponding config.go, do not edit directly.\n")
+	if err != nil {
+		return "", fmt.Errorf("failed to write generated notice: %w", err)
+	}
+
+	// Execute the template with the data and write to file
 	err = tmpl.Execute(file, data)
 	if err != nil {
 		return "", fmt.Errorf("failed to execute template: %w", err)
 	}
+
 	return outputConfig, nil
 }

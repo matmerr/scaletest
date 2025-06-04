@@ -5,10 +5,8 @@ import (
 	"testing"
 
 	flow "github.com/Azure/go-workflow"
-	netpolchurn "github.com/matmerr/scaletest/scenarios/kube-burner/netpol-churn"
 	kind "github.com/matmerr/scaletest/workflows/infra/kind"
 	kb "github.com/matmerr/scaletest/workflows/kube-burner"
-	prom "github.com/matmerr/scaletest/workflows/prometheus"
 	"github.com/matmerr/scaletest/workflows/welcome"
 )
 
@@ -21,11 +19,15 @@ func TestWorkflow(t *testing.T) {
 
 			//Run tests,
 			new(welcome.Intro),
-			kind.RunDeployKind(),
-			prom.RunConfigurePrometheus(),
-			kb.RunKubeBurner(netpolchurn.NewNetpolChurnConfig()),
 		),
 	)
+
+	steps := make([]flow.Steper, 0, len(scenarios))
+	for _, scenario := range scenarios {
+		steps = append(steps, kb.GenerateYaml(scenario))
+	}
+
+	flow.Pipe(steps...)
 
 	if err := root.Do(context.Background()); err != nil {
 		t.Fatalf("failed to run workflow: %v", err)
