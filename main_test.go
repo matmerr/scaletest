@@ -11,21 +11,28 @@ import (
 )
 
 func TestWorkflow(t *testing.T) {
-	root := new(flow.Workflow)
+	// Setup steps (prereqs, cluster, intro)
+	setup := flow.Pipe(
+		kb.InstallKubeBurner(),
+		kind.RunInstallKind(),
+		new(welcome.Intro),
+	)
 
-	stepKubeBurner := flow.Step(kb.InstallKubeBurner())
-	prev := root.Add(stepKubeBurner)
-
-	stepKind := flow.Step(kind.RunInstallKind()).DependsOn(prev)
-	prev = root.Add(stepKind)
-
-	stepIntro := flow.Step(new(welcome.Intro)).DependsOn(prev)
-	prev = root.Add(stepIntro)
-
+	// Scenario steps (run kube-burner for each scenario)
+	scenarioSteps := make([]flow.Steper, 0, len(Scenarios))
 	for _, scenario := range Scenarios {
-		scenarioStep := flow.Step(kb.RunKubeBurner(scenario)).DependsOn(prev)
-		prev = root.Add(scenarioStep)
+		scenarioSteps = append(scenarioSteps, kb.RunKubeBurner(scenario))
 	}
+
+	scenarioPipe := flow.Pipe(scenarioSteps...)
+
+	// Use batch pipe to stitch setup and scenarios
+	root := new(flow.Workflow).Add(
+		flow.BatchPipe(
+			setup,
+			scenarioPipe,
+		),
+	)
 
 	if err := root.Do(context.Background()); err != nil {
 		t.Fatalf("failed to run workflow: %v", err)
