@@ -52,9 +52,9 @@ func (s *InstallHubblePodMonitorStep) Do(ctx context.Context) error {
 			"release": "prometheus",
 		},
 		Selector: map[string]string{
-			"k8s-app": "hubble",
+			"k8s-app": "cilium",
 		},
-		Port:    "metrics",
+		Port:    "9965",
 		Relabel: nil,
 	})
 }
