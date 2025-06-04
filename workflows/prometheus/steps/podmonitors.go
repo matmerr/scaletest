@@ -21,10 +21,10 @@ type InstallCiliumPodMonitorStep struct {
 
 func (s *InstallCiliumPodMonitorStep) Do(ctx context.Context) error {
 	return CreateOrUpdatePodMonitor(ctx, PodMonitorSpec{
-		Name:      "cilium-agent-pods",
+		Name:      "cilium-metrics",
 		Namespace: s.Namespace,
 		Labels: map[string]string{
-			"k8s-app": "cilium-agent-pods",
+			"k8s-app": "cilium-metrics",
 			"release": "prometheus",
 		},
 		Selector: map[string]string{
@@ -45,17 +45,21 @@ type InstallHubblePodMonitorStep struct {
 
 func (s *InstallHubblePodMonitorStep) Do(ctx context.Context) error {
 	return CreateOrUpdatePodMonitor(ctx, PodMonitorSpec{
-		Name:      "hubble-pods",
+		Name:      "hubble-metrics",
 		Namespace: s.Namespace,
 		Labels: map[string]string{
-			"k8s-app": "hubble",
+			"k8s-app": "hubble-metrics",
 			"release": "prometheus",
 		},
 		Selector: map[string]string{
 			"k8s-app": "cilium",
 		},
-		Port:    "9965",
-		Relabel: nil,
+		Port: "hubble-metrics",
+		Relabel: []monitoringv1.RelabelConfig{{
+			SourceLabels: []monitoringv1.LabelName{"__name__"},
+			Regex:        "(.*)",
+			Action:       "keep",
+		}},
 	})
 }
 

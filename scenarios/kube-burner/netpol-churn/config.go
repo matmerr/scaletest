@@ -7,7 +7,7 @@ import (
 
 func NewNetpolChurnConfig() Config {
 	jobIterationsStr := os.Getenv("NETPOL_CHURN_JOB_ITERATIONS")
-	jobIterations := 5
+	jobIterations := 9
 
 	if jobIterationsStr != "" {
 		if val, err := strconv.Atoi(jobIterationsStr); err == nil {
@@ -42,7 +42,7 @@ metricsEndpoints:
 jobs:
   - name: network-policy-perf-pods
     namespace: network-policy-perf
-    jobIterations: {{ .JobIterations }}
+    jobIterations: 9
     qps: 20
     burst: 20
     namespacedIterations: true
