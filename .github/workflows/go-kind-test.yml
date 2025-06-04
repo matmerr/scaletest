@@ -35,7 +35,7 @@ jobs:
         env:
           NETPOL_CHURN_JOB_ITERATIONS: ${{ github.event.inputs.NETPOL_CHURN_JOB_ITERATIONS || '1' }}
         run: |
-          go test -v ./main_test.go
+          go test -v
 
       - name: Collect scenario output artifacts
         run: |

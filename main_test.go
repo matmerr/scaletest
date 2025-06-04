@@ -24,10 +24,11 @@ func TestWorkflow(t *testing.T) {
 
 	steps := make([]flow.Steper, 0, len(scenarios))
 	for _, scenario := range scenarios {
-		steps = append(steps, kb.GenerateYaml(scenario))
+		steps = append(steps, kb.RunKubeBurner(scenario))
 	}
 
-	flow.Pipe(steps...)
+	// add all scenarios to the root workflow
+	root.Add(flow.Pipe(steps...))
 
 	if err := root.Do(context.Background()); err != nil {
 		t.Fatalf("failed to run workflow: %v", err)
