@@ -7,7 +7,7 @@ import (
 )
 
 // Add all kubeburner scenarios here
-var scenarios = []yaml.Template{
+var Scenarios = []yaml.Template{
 	netpolchurn.NewNetpolChurnConfig(),
 	apiintensive.NewApiIntensiveConfig(),
 }

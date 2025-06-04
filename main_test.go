@@ -11,34 +11,21 @@ import (
 )
 
 func TestWorkflow(t *testing.T) {
+	root := new(flow.Workflow)
 
-	steps := make([]flow.Steper, 0, len(scenarios))
-	for _, scenario := range scenarios {
-		steps = append(steps, kb.RunKubeBurner(scenario))
+	stepKubeBurner := flow.Step(kb.InstallKubeBurner())
+	prev := root.Add(stepKubeBurner)
+
+	stepKind := flow.Step(kind.RunInstallKind()).DependsOn(prev)
+	prev = root.Add(stepKind)
+
+	stepIntro := flow.Step(new(welcome.Intro)).DependsOn(prev)
+	prev = root.Add(stepIntro)
+
+	for _, scenario := range Scenarios {
+		scenarioStep := flow.Step(kb.RunKubeBurner(scenario)).DependsOn(prev)
+		prev = root.Add(scenarioStep)
 	}
-
-	setup := new(flow.Workflow).Add(
-		flow.Pipe(
-			// Install prerequisites
-			kb.InstallKubeBurner(),
-			kind.RunInstallKind(),
-
-			//Run tests,
-			new(welcome.Intro),
-		),
-	)
-
-	scenarioSteps := new(flow.Workflow).Add(
-		flow.Pipe(
-			steps...,
-		),
-	)
-
-	// add all scenarios to the root workflow
-	root := new(flow.Workflow).Add(flow.Pipe(
-		setup,
-		scenarioSteps,
-	))
 
 	if err := root.Do(context.Background()); err != nil {
 		t.Fatalf("failed to run workflow: %v", err)
