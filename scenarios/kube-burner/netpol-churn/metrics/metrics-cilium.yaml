@@ -1,6 +1,6 @@
 # This is your metrics profile for Prometheus
-- query: "cilium_bpf_map_pressure"
-  metricName: cilium_bpf_map_pressure
+- query: "cilium_bpf_maps"
+  metricName: cilium_bpf_maps
   instant: false # Set to true for an instant query, false for a range query
   captureStart: false # Set to true if you want to capture at the start of the job
 
