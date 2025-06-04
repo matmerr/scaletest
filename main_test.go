@@ -20,6 +20,7 @@ func TestWorkflow(t *testing.T) {
 	setup := flow.Pipe(
 		kb.InstallKubeBurner(),
 		kind.RunInstallKind(),
+		kind.RunDeployKind(),
 		prom.RunConfigurePrometheus(),
 		new(welcome.Intro),
 	)
