@@ -73,12 +73,12 @@ jobs:
     qps: 20
     burst: 20
     namespacedIterations: true
-    podWait: false
+    podWait: true
     waitWhenFinished: true
-    preLoadImages: false
+    preLoadImages: true
     preLoadPeriod: 15s
     jobPause: 15s
-    cleanup: false
+    cleanup: true
     namespaceLabels:
       security.openshift.io/scc.podSecurityLabelSync: false
       pod-security.kubernetes.io/enforce: privileged
