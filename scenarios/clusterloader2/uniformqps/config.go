@@ -45,6 +45,7 @@ steps:
   - Identifier: CiliumBPFMapPressure
     Method: GenericPrometheusQuery
     Params:
+      action: start
       metricName: Cilium BPF Map Pressure
       metricVersion: v1
       unit: "%"

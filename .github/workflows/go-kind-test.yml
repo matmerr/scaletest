@@ -22,9 +22,9 @@ on:
 
 jobs:
   kube-burner:
-    uses: ./.github/workflows/executors/kube-burner.yml
+    uses: ./.github/workflows/kube-burner.yml
     with:
       NETPOL_CHURN_JOB_ITERATIONS: ${{ github.event.inputs.NETPOL_CHURN_JOB_ITERATIONS || '1' }}
 
   clusterloader2:
-    uses: ./.github/workflows/executors/clusterloader2.yml
+    uses: ./.github/workflows/clusterloader2.yml
