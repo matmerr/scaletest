@@ -26,7 +26,7 @@ jobs:
 
       - name: Run ClusterLoader2 tests
         run: |
-          go test -v -run TestRunClusterLoader2Scenarios ./main_test.go
+          go test -v -run TestRunClusterLoader2Scenarios .
 
       - name: Collect scenario output artifacts
         run: |
@@ -37,7 +37,7 @@ jobs:
               cp "$f" "artifacts/$scenario/$(basename $f)"
             done
           done
-          
+
       - name: Upload scenario output artifacts
         uses: actions/upload-artifact@v4
         with:

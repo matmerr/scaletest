@@ -19,7 +19,7 @@ type GetKubeConfig struct {
 	SubscriptionID    string
 }
 
-func (c *GetKubeConfig) Do() error {
+func (c *GetKubeConfig) Do(context.Context) error {
 	kubeconfigfilepath := clientcmd.RecommendedHomeFile
 
 	cred, err := azidentity.NewAzureCLICredential(nil)

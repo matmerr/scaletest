@@ -9,6 +9,7 @@ func RunDeployKind() *flow.Workflow {
 	w := new(flow.Workflow)
 	w.Add(
 		flow.Pipe(
+			&kindsteps.InstallKindStep{},
 			&kindsteps.CreateKindCluster{},
 			&kindsteps.GetKindClusterKubeConfig{},
 		),

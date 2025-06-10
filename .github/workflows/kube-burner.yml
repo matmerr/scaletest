@@ -38,7 +38,7 @@ jobs:
         env:
           NETPOL_CHURN_JOB_ITERATIONS: ${{ inputs.NETPOL_CHURN_JOB_ITERATIONS || github.event.inputs.NETPOL_CHURN_JOB_ITERATIONS || '1' }}
         run: |
-          go test -v -run TestRunKubeBurnerScenarios ./main_test.go
+          go test -v -run TestRunKubeBurnerScenarios .
 
       - name: Collect scenario output artifacts
         run: |
@@ -49,7 +49,7 @@ jobs:
               cp "$f" "artifacts/$scenario/$(basename $f)"
             done
           done
-          
+
       - name: Upload scenario output artifacts
         uses: actions/upload-artifact@v4
         with:
