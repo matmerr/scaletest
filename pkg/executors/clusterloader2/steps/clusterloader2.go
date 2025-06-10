@@ -6,6 +6,8 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
+	"time"
 
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
@@ -83,8 +85,11 @@ func (c *ClusterLoader2) Do(ctx context.Context) error {
 	return nil
 }
 
-// deleteMasterServiceMonitor watches for the ServiceMonitor named "master" in the monitoring namespace and deletes it as soon as it appears.
+// this is really annoying, but on kind clusters, clusterloader2 creates a ServiceMonitor named "master" in the monitoring namespace,
+// but since non of these targets in the ServiceMonitor exist in kind clusters, the test will never reach ready state.
+// We add this deleteMasterServiceMonitor to watch"master" in the monitoring namespace and deletes it as soon as it appears.
 func deleteMasterServiceMonitor(ctx context.Context, kubeconfig string) {
+	slog.Info("Starting to watch for ServiceMonitor 'master' to delete it")
 	config, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
 	if err != nil {
 		slog.Error("Failed to build kubeconfig for client-go", "err", err)
@@ -101,25 +106,46 @@ func deleteMasterServiceMonitor(ctx context.Context, kubeconfig string) {
 		Resource: "servicemonitors",
 	}
 	resource := dyn.Resource(gvr).Namespace("monitoring")
-	watcher, err := resource.Watch(ctx, v1.ListOptions{})
-	if err != nil {
-		slog.Error("Failed to start watch on ServiceMonitors", "err", err)
-		return
-	}
-	defer watcher.Stop()
-	for {
-		select {
-		case <-ctx.Done():
-			return
-		case event := <-watcher.ResultChan():
-			if event.Type == watch.Added || event.Type == watch.Modified {
-				obj := event.Object.(v1.Object)
-				if obj.GetName() == "master" {
 
-					slog.Info("Deleting ServiceMonitor 'master', cl2 creates it and it's not relevant")
-					err := resource.Delete(ctx, "master", v1.DeleteOptions{})
-					if err != nil && !os.IsNotExist(err) {
-						slog.Error("Failed to delete ServiceMonitor 'master'", "err", err)
+	// Retry logic for when the resource is not found (CRD not installed yet)
+	backoff := 1 * time.Second
+	maxBackoff := 30 * time.Second
+	for {
+		watcher, err := resource.Watch(ctx, v1.ListOptions{})
+		if err != nil {
+			if strings.Contains(err.Error(), "could not find the requested resource") {
+				slog.Warn("ServiceMonitor resource not found, retrying", "err", err)
+				select {
+				case <-ctx.Done():
+					return
+				case <-time.After(backoff):
+					if backoff < maxBackoff {
+						backoff *= 2
+						if backoff > maxBackoff {
+							backoff = maxBackoff
+						}
+					}
+					continue
+				}
+			} else {
+				slog.Error("Failed to start watch on ServiceMonitors", "err", err)
+				return
+			}
+		}
+		defer watcher.Stop()
+		for {
+			select {
+			case <-ctx.Done():
+				return
+			case event := <-watcher.ResultChan():
+				if event.Type == watch.Added || event.Type == watch.Modified {
+					obj := event.Object.(v1.Object)
+					if obj.GetName() == "master" {
+						slog.Info("Deleting ServiceMonitor 'master', cl2 creates it and it's not relevant")
+						err := resource.Delete(ctx, "master", v1.DeleteOptions{})
+						if err != nil && !os.IsNotExist(err) {
+							slog.Error("Failed to delete ServiceMonitor 'master'", "err", err)
+						}
 					}
 				}
 			}
