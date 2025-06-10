@@ -47,6 +47,11 @@ func (s *CreateKindCluster) Do(ctx context.Context) error {
 			{
 				"role": "control-plane",
 			},
+			{
+				"role": "control-plane",
+			},
+			{"role": "worker"},
+			{"role": "worker"},
 			{"role": "worker"},
 		},
 	}

@@ -7,7 +7,13 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"github.com/matmerr/scaletest/pkg/infrastructure/prometheus/podmonitors"
+	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime/schema"
+	"k8s.io/apimachinery/pkg/watch"
+	"k8s.io/client-go/dynamic"
+	"k8s.io/client-go/tools/clientcmd"
+
+	"github.com/matmerr/scaletest/pkg/infrastructure/addons/prometheus/podmonitors"
 )
 
 type ClusterLoader2 struct {
@@ -31,19 +37,32 @@ func (c *ClusterLoader2) Do(ctx context.Context) error {
 		return err
 	}
 
-	// Only add --enable-prometheus-server if you want clusterloader2 to deploy its own Prometheus
-	// Remove --prometheus-url, as this flag is not supported by your clusterloader2 build
 	cmdArgs := []string{
+		"--v=2",
 		"--kubeconfig", c.Kubeconfig,
 		"--testconfig", c.ConfigPath,
 		"--provider", c.Provider,
 		"--report-dir", outputDir,
+		"--apiserver-pprof-by-client-enabled", "false",
 		"--enable-prometheus-server",
 		"--prometheus-storage-class-provisioner", "standard",
 		"--prometheus-pvc-storage-class", "standard",
 		"--prometheus-storage-class-volume-type", "standard",
 		"--prometheus-additional-monitors-path", podmonitors.PodMonitorDirectory,
+		"--prometheus-scrape-master-kubelets=false",
+		"--prometheus-scrape-kubelets=false",
+		"--prometheus-scrape-metrics-server=false",
+		"--prometheus-scrape-kube-state-metrics=false",
+		"--prometheus-scrape-kubelets=false",
+		"--prometheus-scrape-kube-proxy=false",
 	}
+
+	deleteCtx, deleteCancel := context.WithCancel(ctx)
+	deletionDone := make(chan struct{})
+	go func() {
+		defer close(deletionDone)
+		deleteMasterServiceMonitor(deleteCtx, c.Kubeconfig)
+	}()
 
 	slog.Info("Running command", "cmd", binPath, "args", cmdArgs)
 	cmd := exec.CommandContext(ctx, binPath, cmdArgs...)
@@ -53,9 +72,57 @@ func (c *ClusterLoader2) Do(ctx context.Context) error {
 
 	slog.Info("Executing command string", "cmd", cmd.String())
 
-	if err := cmd.Run(); err != nil {
+	err = cmd.Run()
+	deleteCancel()
+	<-deletionDone
+
+	if err != nil {
 		slog.Error("failed to run clusterloader2", "err", err)
 		return err
 	}
 	return nil
+}
+
+// deleteMasterServiceMonitor watches for the ServiceMonitor named "master" in the monitoring namespace and deletes it as soon as it appears.
+func deleteMasterServiceMonitor(ctx context.Context, kubeconfig string) {
+	config, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
+	if err != nil {
+		slog.Error("Failed to build kubeconfig for client-go", "err", err)
+		return
+	}
+	dyn, err := dynamic.NewForConfig(config)
+	if err != nil {
+		slog.Error("Failed to create dynamic client", "err", err)
+		return
+	}
+	gvr := schema.GroupVersionResource{
+		Group:    "monitoring.coreos.com",
+		Version:  "v1",
+		Resource: "servicemonitors",
+	}
+	resource := dyn.Resource(gvr).Namespace("monitoring")
+	watcher, err := resource.Watch(ctx, v1.ListOptions{})
+	if err != nil {
+		slog.Error("Failed to start watch on ServiceMonitors", "err", err)
+		return
+	}
+	defer watcher.Stop()
+	for {
+		select {
+		case <-ctx.Done():
+			return
+		case event := <-watcher.ResultChan():
+			if event.Type == watch.Added || event.Type == watch.Modified {
+				obj := event.Object.(v1.Object)
+				if obj.GetName() == "master" {
+
+					slog.Info("Deleting ServiceMonitor 'master', cl2 creates it and it's not relevant")
+					err := resource.Delete(ctx, "master", v1.DeleteOptions{})
+					if err != nil && !os.IsNotExist(err) {
+						slog.Error("Failed to delete ServiceMonitor 'master'", "err", err)
+					}
+				}
+			}
+		}
+	}
 }

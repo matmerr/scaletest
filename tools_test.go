@@ -7,7 +7,7 @@ import (
 	flow "github.com/Azure/go-workflow"
 	cl2 "github.com/matmerr/scaletest/pkg/executors/clusterloader2"
 	kb "github.com/matmerr/scaletest/pkg/executors/kube-burner"
-	kind "github.com/matmerr/scaletest/pkg/infrastructure/kind"
+	kind "github.com/matmerr/scaletest/pkg/infrastructure/providers/kind"
 	"github.com/matmerr/scaletest/pkg/yaml"
 	scenarios "github.com/matmerr/scaletest/scenarios"
 )

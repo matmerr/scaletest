@@ -2,7 +2,7 @@ package kind
 
 import (
 	flow "github.com/Azure/go-workflow"
-	kindsteps "github.com/matmerr/scaletest/pkg/infrastructure/kind/steps"
+	kindsteps "github.com/matmerr/scaletest/pkg/infrastructure/providers/kind/steps"
 )
 
 func RunDeployKind() *flow.Workflow {

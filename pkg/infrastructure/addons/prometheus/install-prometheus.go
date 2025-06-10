@@ -4,8 +4,8 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 
 	flow "github.com/Azure/go-workflow"
-	podmonitors "github.com/matmerr/scaletest/pkg/infrastructure/prometheus/podmonitors"
-	promsteps "github.com/matmerr/scaletest/pkg/infrastructure/prometheus/steps"
+	podmonitors "github.com/matmerr/scaletest/pkg/infrastructure/addons/prometheus/podmonitors"
+	promsteps "github.com/matmerr/scaletest/pkg/infrastructure/addons/prometheus/steps"
 	utils "github.com/matmerr/scaletest/pkg/utils"
 )
 

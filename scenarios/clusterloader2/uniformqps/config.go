@@ -52,7 +52,7 @@ steps:
         - map_name
       queries:
         - name: Max BPF Map Pressure
-          query: max_over_time(max(cilium_bpf_map_pressure) by (map_name)[%v:]) * 100
+          query: max(cilium_bpf_map_pressure)
           threshold: 90
 - name: Create deployment
   phases:

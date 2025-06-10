@@ -17,18 +17,19 @@ import (
 	cl2 "github.com/matmerr/scaletest/pkg/executors/clusterloader2"
 	kb "github.com/matmerr/scaletest/pkg/executors/kube-burner"
 
-	"github.com/matmerr/scaletest/pkg/infrastructure/cilium"
-	prom "github.com/matmerr/scaletest/pkg/infrastructure/prometheus"
+	prom "github.com/matmerr/scaletest/pkg/infrastructure/addons/prometheus"
+	"github.com/matmerr/scaletest/pkg/infrastructure/addons/cilium"
+	kind "github.com/matmerr/scaletest/pkg/infrastructure/providers/kind"
 	"github.com/matmerr/scaletest/pkg/welcome"
 )
 
 func TestRunClusterLoader2Scenarios(t *testing.T) {
 	cl2exec := cl2.NewClusterLoader2Executor(
 		flow.Pipe(
-			//cl2.RunInstallClusterLoader2CLI(),
-			//kind.RunInstallKindCLI(),
-			//kind.RunDeployKind(),
-			//cilium.RunInstallCilium(),
+			cl2.RunInstallClusterLoader2CLI(),
+			kind.RunInstallKindCLI(),
+			kind.RunDeployKind(),
+			cilium.RunInstallCilium(),
 			//prom.RunDeployPrometheus(),
 			new(welcome.Intro),
 		),

@@ -1,6 +1,6 @@
 output/*
 **/scenarios/**/generated/*.yaml
-**/scenarios/**/output/*.json
+**/scenarios/**/output/
 **debug_bin**
 **.log
 tools/bin/*

@@ -2,7 +2,7 @@ package cilium
 
 import (
 	flow "github.com/Azure/go-workflow"
-	ciliumsteps "github.com/matmerr/scaletest/pkg/infrastructure/cilium/steps"
+	ciliumsteps "github.com/matmerr/scaletest/pkg/infrastructure/addons/cilium/steps"
 )
 
 func RunInstallCilium() *flow.Workflow {
