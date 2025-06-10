@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: cilium-metrics
+  namespace: monitoring
+  labels:
+    k8s-app: cilium-metrics
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      k8s-app: cilium
+  podMetricsEndpoints:
+    - port: prometheus
+      relabelings:
+        - sourceLabels: [__name__]
+          regex: (.*)
+          action: keep

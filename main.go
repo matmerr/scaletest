@@ -11,7 +11,12 @@ import (
 func main() {
 	slog.Info("List of All Available Scenarios")
 	// all current scenarios in scenarios.Index
-	for _, scenario := range scenarios.Index {
+	for _, scenario := range scenarios.KubeBurnerIndex {
+		t := reflect.TypeOf(scenario)
+		pkgPath := filepath.Base(t.PkgPath())
+		slog.Info("Scenario", slog.String("name", pkgPath), slog.String("path", t.PkgPath()))
+	}
+	for _, scenario := range scenarios.ClusterLoader2Index {
 		t := reflect.TypeOf(scenario)
 		pkgPath := filepath.Base(t.PkgPath())
 		slog.Info("Scenario", slog.String("name", pkgPath), slog.String("path", t.PkgPath()))

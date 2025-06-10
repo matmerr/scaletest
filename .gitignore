@@ -4,3 +4,4 @@ output/*
 **debug_bin**
 **.log
 tools/bin/*
+tools/src/

@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: hubble-metrics
+  namespace: monitoring
+  labels:
+    k8s-app: hubble-metrics
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      k8s-app: cilium
+  podMetricsEndpoints:
+    - port: hubble-metrics
+      relabelings:
+        - sourceLabels: [__name__]
+          regex: (.*)
+          action: keep
