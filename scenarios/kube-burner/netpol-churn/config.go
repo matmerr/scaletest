@@ -31,7 +31,7 @@ func (f Config) GetTemplate() string {
 const configTemplate = `
 metricsEndpoints:
   - endpoint: http://localhost:9090 # URL to your Prometheus server
-    step: 30s # Scrape interval (optional, default is 30s)
+    step: 10s # Scrape interval (optional, default is 30s)
     skipTLSVerify: true # Skip TLS certificate verification (optional)
     metrics:
       - ./metrics/metrics-cilium.yaml # Reference to your custom metrics profile file
@@ -49,7 +49,7 @@ jobs:
     podWait: false
     waitWhenFinished: true
     preLoadImages: false
-    preLoadPeriod: 1s
+    preLoadPeriod: 20s
     skipIndexing: true
     namespaceLabels:
       kube-burner.io/skip-networkpolicy-latency: true
@@ -77,7 +77,7 @@ jobs:
     waitWhenFinished: true
     preLoadImages: true
     preLoadPeriod: 15s
-    jobPause: 15s
+    jobPause: 60s
     cleanup: true
     namespaceLabels:
       security.openshift.io/scc.podSecurityLabelSync: false

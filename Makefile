@@ -17,4 +17,4 @@ test-cl2:
 .PHONY: test-kubeburner
 test-kubeburner:
 	@echo "Running kubeburner tests..."
-	go test -v -run ^TestRunKubeburnerScenarios$$ .
+	go test -v -run ^TestRunKubeBurnerScenarios$$ .
