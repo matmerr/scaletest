@@ -31,7 +31,7 @@ func (f Config) GetTemplate() string {
 const configTemplate = `
 metricsEndpoints:
   - endpoint: http://localhost:9090 # URL to your Prometheus server
-    step: 10s # Scrape interval (optional, default is 30s)
+    step: 30s # Scrape interval (optional, default is 30s)
     skipTLSVerify: true # Skip TLS certificate verification (optional)
     metrics:
       - ./metrics/metrics-cilium.yaml # Reference to your custom metrics profile file
