@@ -2,7 +2,7 @@
 
 .PHONY: generate
 generate:
-	@echo "Generating scenario YAMLs using go generate..."
+	@echo "Generating config files..."
 	go test -v -run TestGenerate 
 
 .PHONY: tools

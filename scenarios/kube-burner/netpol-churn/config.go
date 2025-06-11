@@ -7,7 +7,7 @@ import (
 
 func NewNetpolChurnConfig() Config {
 	jobIterationsStr := os.Getenv("NETPOL_CHURN_JOB_ITERATIONS")
-	jobIterations := 9
+	jobIterations := 20
 
 	if jobIterationsStr != "" {
 		if val, err := strconv.Atoi(jobIterationsStr); err == nil {
@@ -42,7 +42,7 @@ metricsEndpoints:
 jobs:
   - name: network-policy-perf-pods
     namespace: network-policy-perf
-    jobIterations: 9
+    jobIterations: {{ .JobIterations }}
     qps: 20
     burst: 20
     namespacedIterations: true
@@ -69,7 +69,7 @@ jobs:
 
   - name: network-policy-perf
     namespace: network-policy-perf
-    jobIterations: 9
+    jobIterations: {{ .JobIterations }}
     qps: 20
     burst: 20
     namespacedIterations: true
@@ -77,7 +77,7 @@ jobs:
     waitWhenFinished: true
     preLoadImages: true
     preLoadPeriod: 15s
-    jobPause: 60s
+    jobPause: 120s
     cleanup: true
     namespaceLabels:
       security.openshift.io/scc.podSecurityLabelSync: false
