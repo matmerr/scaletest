@@ -15,12 +15,22 @@ const (
 	UniformQPS Scenario = "UniformQPS"
 )
 
-func GetScenarioSteps(cl2s Scenario) []yaml.Template {
-	return providerSetupIndex[cl2s]
+// preserve mapping of string to scenarios, which may result in 1:many scenarios by the same name
+// later on
+var providerSetupIndex = map[Scenario][]yaml.Template{
+	UniformQPS: {
+		uniformqps.NewUniformQPSConfig(),
+	},
 }
 
-// GenerateAllScenarioYAML generates YAML files for all defined scenarios in the provider setup index.
-// each scenario will have a config_generated.yaml file created in the current working directory.
+func GetScenarioSteps(cl2s Scenario) ([]yaml.Template, error) {
+	steps, ok := providerSetupIndex[cl2s]
+	if !ok {
+		return nil, fmt.Errorf("unknown scenario: %s", cl2s)
+	}
+	return steps, nil
+}
+
 func GenerateAllScenarioYAML() error {
 	steps := make([]flow.Steper, 0, len(providerSetupIndex))
 	for _, scenario := range providerSetupIndex {
@@ -36,12 +46,4 @@ func GenerateAllScenarioYAML() error {
 		return fmt.Errorf("failed to generate kube-burner scenario YAML files: %w", err)
 	}
 	return nil
-}
-
-// preserve mapping of string to scenarios, which may result in 1:many scenarios by the same name
-// later on
-var providerSetupIndex = map[Scenario][]yaml.Template{
-	UniformQPS: {
-		uniformqps.NewUniformQPSConfig(),
-	},
 }

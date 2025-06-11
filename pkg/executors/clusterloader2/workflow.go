@@ -4,12 +4,15 @@ import (
 	"context"
 
 	flow "github.com/Azure/go-workflow"
+	cl2scenarios "github.com/matmerr/scaletest/scenarios/clusterloader2"
 
 	cl2steps "github.com/matmerr/scaletest/pkg/executors/clusterloader2/steps"
 	"github.com/matmerr/scaletest/pkg/yaml"
 )
 
 type ClusterLoader2Executor struct {
+	scenario cl2scenarios.Scenario
+
 	SetupSteps flow.AddSteps
 
 	Options ExecutorOptions
@@ -20,11 +23,16 @@ type ExecutorOptions struct {
 	Provider   string
 }
 
-func NewClusterLoader2Executor(setupSteps flow.AddSteps, options ExecutorOptions) *ClusterLoader2Executor {
+func NewClusterLoader2Executor(scenario cl2scenarios.Scenario, setupSteps flow.AddSteps, options ExecutorOptions) *ClusterLoader2Executor {
 	return &ClusterLoader2Executor{
+		scenario:   scenario,
 		SetupSteps: setupSteps,
 		Options:    options,
 	}
+}
+
+func (k *ClusterLoader2Executor) GetScenarioTemplates() ([]yaml.Template, error) {
+	return cl2scenarios.GetScenarioSteps(k.scenario)
 }
 
 func (c *ClusterLoader2Executor) GetRunWorkflow(templateConfig yaml.Template) *flow.Workflow {

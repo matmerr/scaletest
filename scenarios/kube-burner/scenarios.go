@@ -16,8 +16,23 @@ const (
 	APIIntensive      Scenario = "apiintensive"
 )
 
-func GetScenarioSteps(kbs Scenario) []yaml.Template {
-	return providerSetupIndex[kbs]
+var providerSetupIndex = map[Scenario][]yaml.Template{
+	NetpolChurnConfig: {
+		netpolchurn.NewNetpolChurnConfig(),
+	},
+
+	APIIntensive: {
+		// Placeholder for future API intensive scenario
+		// apiintensive.NewApiIntensiveConfig(),
+	},
+}
+
+func GetScenarioSteps(kbs Scenario) ([]yaml.Template, error) {
+	steps, ok := providerSetupIndex[kbs]
+	if !ok {
+		return nil, fmt.Errorf("unknown scenario: %s", kbs)
+	}
+	return steps, nil
 }
 
 // GenerateAllScenarioYAML generates YAML files for all defined scenarios in the provider setup index.
@@ -37,15 +52,4 @@ func GenerateAllScenarioYAML() error {
 		return fmt.Errorf("failed to generate kube-burner scenario YAML files: %w", err)
 	}
 	return nil
-}
-
-var providerSetupIndex = map[Scenario][]yaml.Template{
-	NetpolChurnConfig: {
-		netpolchurn.NewNetpolChurnConfig(),
-	},
-
-	APIIntensive: {
-		// Placeholder for future API intensive scenario
-		// apiintensive.NewApiIntensiveConfig(),
-	},
 }

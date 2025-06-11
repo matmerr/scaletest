@@ -6,16 +6,24 @@ import (
 	flow "github.com/Azure/go-workflow"
 	kbsteps "github.com/matmerr/scaletest/pkg/executors/kube-burner/steps"
 	"github.com/matmerr/scaletest/pkg/yaml"
+	kbscenarios "github.com/matmerr/scaletest/scenarios/kube-burner"
 )
 
 type KubeBurnerExecutor struct {
+	scenario kbscenarios.Scenario
+
 	SetupSteps flow.AddSteps
 }
 
-func NewKubeBurnerExecutor(setupSteps flow.AddSteps) *KubeBurnerExecutor {
+func NewKubeBurnerExecutor(scenario kbscenarios.Scenario, executorSetupSteps flow.AddSteps) *KubeBurnerExecutor {
 	return &KubeBurnerExecutor{
-		SetupSteps: setupSteps,
+		scenario:   scenario,
+		SetupSteps: executorSetupSteps,
 	}
+}
+
+func (k *KubeBurnerExecutor) GetScenarioTemplates() ([]yaml.Template, error) {
+	return kbscenarios.GetScenarioSteps(k.scenario)
 }
 
 func (k *KubeBurnerExecutor) GetRunWorkflow(templateConfig yaml.Template) *flow.Workflow {

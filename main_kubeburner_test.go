@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	flow "github.com/Azure/go-workflow"
-	scenarios "github.com/matmerr/scaletest/scenarios/kube-burner"
+	kbscenario "github.com/matmerr/scaletest/scenarios/kube-burner"
 
 	kb "github.com/matmerr/scaletest/pkg/executors/kube-burner"
 
@@ -15,8 +15,17 @@ import (
 
 func TestRunKubeBurnerScenarios(t *testing.T) {
 
+	// specify the cluster provider environment we want to use, in this case a kind cluster with Cilium
+	kindCluster := providers.KindWithCilium
+
+	// get the scenario for netpol churn config, in this case the netpol scenario
+	scenario := kbscenario.NetpolChurnConfig
+
 	// create a new Kube-Burner executor, which will run the scenarios
 	kbexec := kb.NewKubeBurnerExecutor(
+
+		// pass the scenario to the executor
+		scenario,
 
 		// here we can specify any dependencies to install, and/or addons we want to install
 		flow.Pipe(
@@ -33,14 +42,8 @@ func TestRunKubeBurnerScenarios(t *testing.T) {
 		),
 	)
 
-	// specify the cluster provider we want to use, in this case a cluster that's Kind with Cilium
-	kindCluster := providers.KindWithCilium
-
-	// Get the scenario for netpol churn config
-	scenario := scenarios.NetpolChurnConfig
-
 	// Run the scenarios with the specified cluster provider, the executor, and
-	err := RunScenarios(kindCluster, kbexec, scenarios.GetScenarioSteps(scenario))
+	err := RunScenarios(kindCluster, kbexec)
 	if err != nil {
 		t.Fatalf("failed to run Kube-Burner scenarios: %v", err)
 	}
