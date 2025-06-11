@@ -46,10 +46,11 @@ jobs:
     qps: 20
     burst: 20
     namespacedIterations: true
-    podWait: false
+    podWait: true
     waitWhenFinished: true
-    preLoadImages: false
-    preLoadPeriod: 20s
+    preLoadImages: true
+    preLoadPeriod: 10s
+    jobPause: 60s
     skipIndexing: true
     namespaceLabels:
       kube-burner.io/skip-networkpolicy-latency: true
@@ -76,7 +77,7 @@ jobs:
     podWait: true
     waitWhenFinished: true
     preLoadImages: true
-    preLoadPeriod: 15s
+    preLoadPeriod: 60s
     jobPause: 120s
     cleanup: true
     namespaceLabels:

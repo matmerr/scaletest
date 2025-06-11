@@ -42,19 +42,6 @@ steps:
       kind: Deployment
       labelSelector: group = test-deployment
       operationTimeout: 120s
-  - Identifier: CiliumBPFMapPressure
-    Method: GenericPrometheusQuery
-    Params:
-      action: start
-      metricName: Cilium BPF Map Pressure
-      metricVersion: v1
-      unit: "%"
-      dimensions:
-        - map_name
-      queries:
-        - name: Max BPF Map Pressure
-          query: max(cilium_bpf_map_pressure)
-          threshold: 90
 - name: Create deployment
   phases:
   - namespaceRange:
@@ -79,4 +66,20 @@ steps:
     Method: PodStartupLatency
     Params:
       action: gather
+- name: Measure Cilium Metrics
+  measurements:
+    - Identifier: CiliumBPFMapPressure
+      Method: GenericPrometheusQuery
+      Params:
+        action: gather
+        metricName: Cilium BPF Map Pressure
+        metricVersion: v1
+        unit: "%"
+        dimensions:
+          - map_name
+        queries:
+          - name: Max BPF Map Pressure
+            query: max(cilium_bpf_map_pressure)
+            threshold: 90
+
 `

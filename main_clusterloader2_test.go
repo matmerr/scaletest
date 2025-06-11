@@ -14,6 +14,8 @@ import (
 )
 
 func TestRunClusterLoader2Scenarios(t *testing.T) {
+
+	// this is a Clusterloader2 test, so we need to set up the ClusterLoader2 executor
 	cl2exec := cl2.NewClusterLoader2Executor(
 
 		// here we can specify any dependencies to install, and/or addons we want to install
