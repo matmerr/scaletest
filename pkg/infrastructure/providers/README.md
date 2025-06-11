@@ -13,6 +13,8 @@ This directory contains provider abstractions and implementations for cluster pr
 
 Use the `Provider` type and its enums (e.g., `ProviderKindWithCilium`, `ProviderAzureExistingCluster`) to refer to supported providers in a type-safe way. All scenario and executor logic references these abstractions to ensure modularity and extensibility. Each provider subdirectory contains workflows and steps for provisioning, configuring, and managing clusters on that platform.
 
+Provider selection is integrated with the matrix-based executor workflow in CI, allowing scenarios to be run against different providers as needed.
+
 ## Adding Providers
 
 To add a new provider:

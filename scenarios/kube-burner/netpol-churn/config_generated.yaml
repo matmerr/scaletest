@@ -2,7 +2,7 @@
 
 metricsEndpoints:
   - endpoint: http://localhost:9090 # URL to your Prometheus server
-    step: 10s # Scrape interval (optional, default is 30s)
+    step: 30s # Scrape interval (optional, default is 30s)
     skipTLSVerify: true # Skip TLS certificate verification (optional)
     metrics:
       - ./metrics/metrics-cilium.yaml # Reference to your custom metrics profile file
@@ -13,14 +13,14 @@ metricsEndpoints:
 jobs:
   - name: network-policy-perf-pods
     namespace: network-policy-perf
-    jobIterations: 20
+    jobIterations: 9
     qps: 20
     burst: 20
     namespacedIterations: true
     podWait: false
     waitWhenFinished: true
     preLoadImages: false
-    preLoadPeriod: 60s
+    preLoadPeriod: 1s
     skipIndexing: true
     namespaceLabels:
       kube-burner.io/skip-networkpolicy-latency: true
@@ -40,15 +40,15 @@ jobs:
 
   - name: network-policy-perf
     namespace: network-policy-perf
-    jobIterations: 20
+    jobIterations: 9
     qps: 20
     burst: 20
     namespacedIterations: true
     podWait: true
     waitWhenFinished: true
     preLoadImages: true
-    preLoadPeriod: 60s
-    jobPause: 120s
+    preLoadPeriod: 15s
+    jobPause: 15s
     cleanup: true
     namespaceLabels:
       security.openshift.io/scc.podSecurityLabelSync: false
@@ -69,4 +69,3 @@ jobs:
           peer_namespaces: 2
           peer_pods: 2
           cidr_rules: 1
-
