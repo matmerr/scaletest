@@ -4,20 +4,20 @@ This directory contains executor implementations for running specific test tools
 
 ## Structure
 
-- `kube-burner/`: Executor logic and workflow steps for running kube-burner scenarios.
-- `clusterloader2/`: Executor logic and workflow steps for running clusterloader2 scenarios.
+- `kube-burner/`: Executor logic and workflow steps for running kube-burner scenarios. Accepts scenario structs from the scenario registry.
+- `clusterloader2/`: Executor logic and workflow steps for running clusterloader2 scenarios. Accepts scenario structs from the scenario registry.
 - `executor.go`: Common interfaces and types for executors.
 
 ## Usage
 
-Executors are invoked by the main test workflows and CI matrix jobs. Each executor is responsible for orchestrating its tool's lifecycle, scenario execution, and artifact collection. Executors are referenced in the CI matrix (see `.github/workflows/go-kind-test.yml`) and can be extended to support additional tools.
+Executors are invoked by the main test workflows and CI jobs. Each executor is responsible for orchestrating its tool's lifecycle, scenario execution, and artifact collection. Executors are referenced in the CI workflows and can be extended to support additional tools. Executors now accept scenario structs and provider objects from the registries, ensuring robust error handling and modularity.
 
 ## Adding Executors
 
 To add a new executor:
 1. Create a new subdirectory (e.g., `my-executor/`).
 2. Implement the workflow and steps for that executor.
-3. Add the executor to the matrix in `.github/workflows/go-kind-test.yml`.
+3. Register the executor in the CI workflows.
 
 ---
 

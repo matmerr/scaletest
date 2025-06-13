@@ -4,18 +4,18 @@ This directory contains provider abstractions and implementations for cluster pr
 
 ## Structure
 
-- `workflow.go`: Defines provider enums and shared provider logic.
-- `provider-index.go`: Maps provider enums to their setup workflows.
+- `provider_registry.go`: Maps provider names to their setup workflows in a registry-driven design.
+- `provider_steps.go`: Provider interface, ClusterProvider struct, and provider selection logic (including error handling and available options logging).
 - `kind/`: Implementation and workflow steps for [kind](https://kind.sigs.k8s.io/) clusters.
 - `azure/`: Implementation and workflow steps for Azure Kubernetes Service (AKS) clusters.
 
 ## Usage
 
-Use the `Provider` type and its enums (e.g., `ProviderKindWithCilium`, `ProviderAzureExistingCluster`) to refer to supported providers in a type-safe way. All scenario and executor logic references these abstractions to ensure modularity and extensibility. Each provider subdirectory contains workflows and steps for provisioning, configuring, and managing clusters on that platform.
+Use the provider registry and `GetClusterProviderFromEnv` to select providers in a robust, error-checked way. Provider selection is now modular and validated against the registry. If an invalid provider is specified, available options are logged and the test fails early.
 
-Provider options:
-- `kind-cilium`: Local kind cluster with Cilium (ProviderKindWithCilium)
-- `azure-existing`: Use an existing Azure AKS cluster (ProviderAzureExistingCluster)
+Provider options (see registry for full list):
+- `kindwithcilium`: Local kind cluster with Cilium
+- `aksexistingcluster`: Use an existing Azure AKS cluster
 
 Provider selection is integrated with the matrix-based executor workflow in CI, allowing scenarios to be run against different providers as needed.
 
@@ -24,10 +24,8 @@ Provider selection is integrated with the matrix-based executor workflow in CI, 
 To add a new provider:
 1. Create a new subdirectory (e.g., `mycloud/` for a new provider).
 2. Implement workflows and steps for that provider.
-3. Add a new enum value to `provider-index.go` and update the `ProviderSetupSteps` map in `workflow.go`.
-
-This directory is the canonical place for adding new providers. All scenario execution and CI workflows reference these abstractions to ensure consistent cluster setup and management.
+3. Register the provider in `provider_registry.go`.
 
 ---
 
-This directory is part of the infrastructure automation layer for scalable Kubernetes testing and benchmarking.
+This directory is part of the modular provider layer for scalable Kubernetes benchmarking and validation.
