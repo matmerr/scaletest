@@ -16,19 +16,19 @@ on:
         options:
           - netpolchurn
           - apiintensive
-      CLUSTER_SETUP_TYPE:
-        description: "Cluster provider setup type"
-        required: true
-        default: kind-cilium
+      CLUSTER_PROVIDER:
+        description: "Cluster provider to use"
+        required: false
+        default: kindwithcilium
         type: choice
         options:
-          - kind-cilium
-          - azure-existing
+          - kindwithcilium
+          - aksexistingcluster
 
 jobs:
   run-kube-burner:
     name: >-
-      Run kube-burner: ${{ github.event.inputs.KB_SCENARIO != '' && github.event.inputs.KB_SCENARIO || 'netpolchurn' }} on ${{ github.event.inputs.CLUSTER_SETUP_TYPE }}
+      Run kube-burner: ${{ github.event.inputs.KB_SCENARIO != '' && github.event.inputs.KB_SCENARIO || 'netpolchurn' }} on ${{ github.event.inputs.CLUSTER_PROVIDER || 'kindwithcilium' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -44,11 +44,10 @@ jobs:
 
       - name: Run kube-burner tests
         env:
-          NETPOL_CHURN_JOB_ITERATIONS: ${{ github.event.inputs.NETPOL_CHURN_JOB_ITERATIONS }}
-          KB_SCENARIO: ${{ github.event.inputs.KB_SCENARIO != '' && github.event.inputs.KB_SCENARIO || 'netpolchurn' }}
-          CLUSTER_SETUP_TYPE: ${{ github.event.inputs.CLUSTER_SETUP_TYPE }}
+          KB_SCENARIO: ${{ github.event.inputs.KB_SCENARIO || 'netpolchurn' }}
+          CLUSTER_PROVIDER: ${{ github.event.inputs.CLUSTER_PROVIDER || 'kindwithcilium' }}
         run: |
-          go test -v -run TestRunKubeBurnerScenarios .
+          go test -v -run ^TestRunKubeBurnerScenarios$$ .
 
       - name: Collect executor output artifacts
         run: |

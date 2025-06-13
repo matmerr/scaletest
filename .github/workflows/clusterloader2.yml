@@ -8,6 +8,14 @@ on:
         required: false
         default: UniformQPS
         type: string
+      CLUSTER_PROVIDER:
+        description: "Cluster provider to use"
+        required: false
+        default: kindwithcilium
+        type: choice
+        options:
+          - kindwithcilium
+          - aksexistingcluster
 
 jobs:
   run-clusterloader2:
@@ -28,6 +36,7 @@ jobs:
       - name: Run clusterloader2 tests
         env:
           CL2_SCENARIO: ${{ github.event.inputs.CL2_SCENARIO || 'UniformQPS' }}
+          CLUSTER_PROVIDER: ${{ github.event.inputs.CLUSTER_PROVIDER || 'kindwithcilium' }}
         run: |
           go test -v -run TestRunClusterLoader2Scenarios .
 
