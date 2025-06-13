@@ -1,0 +1,88 @@
+# This file was generated from the corresponding config.go, do not edit directly.
+
+name: load-config
+
+namespace:
+  number: 1
+  prefix: ns
+  deleteAutomanagedNamespaces: false
+  enableExistingNamespaces: true
+
+tuningSets:
+  - name: Sequence
+    parallelismLimitedLoad:
+      parallelismLimit: 1
+  - name: DeploymentCreateQps
+    qpsLoad:
+      qps: 10
+  - name: DeploymentDeleteQps
+    qpsLoad:
+      qps: 10
+
+steps:
+  - name: Log - fortioNamespaces=1, fortioServerDeployments=1, fortioClientDeployments=1, fortioServerReplicasPerDeployment=1, fortioServerDeploymentReplicasPerNamespace=1, fortioServiceReplicasPerNamespace==1
+    measurements:
+    - Identifier: Dummy
+      Method: Sleep
+      Params:
+        action: start
+        duration: 1ms
+
+  - module:
+      path: /modules/measurements.yaml
+      params:
+        action: start
+        group: fortio
+
+  - module:
+      path: /modules/cilium-measurements.yaml
+      params:
+        action: start
+
+# create resources that won't change
+  - module:
+      path: /modules/services.yaml
+      params:
+        actionName: "Creating"
+        namespaces: 1
+        fortioServiceReplicasPerNamespace: 1
+
+  - module:
+      path: /modules/ciliumnetworkpolicy.yaml
+      params:
+        actionName: "Creating"
+        namespaces: 1
+        Group: fortio
+        cnpsPerNamespace: 1
+
+# deployment creation
+  - module:
+      path: /modules/reconcile-objects.yaml
+      params:
+        actionName: "create"
+        tuningSet: DeploymentCreateQps
+        operationTimeout: 5m
+        Group: fortio
+        namespaces: 1
+        fortioServerDeployments: 1
+        fortioClientDeployments: 1
+        fortioServerDeploymentReplicasPerNamespace: 1
+        fortioClientDeploymentReplicasPerNamespace: 1
+        fortioServerReplicasPerDeployment: 1
+        fortioClientReplicasPerDeployment: 1
+        fortioClientQueriesPerSecond: 100
+        deploymentLabel: start
+
+# FIXME sleep intervals
+  - name: Log - fortioNamespaces=1, fortioServerDeployments=1, fortioClientDeployments=1, fortioServerReplicasPerDeployment=1
+    measurements:
+    - Identifier: Dummy
+      Method: Sleep
+      Params:
+        action: start
+        duration: 1m30s
+
+  - module:
+      path: /modules/cilium-measurements.yaml
+      params:
+        action: gather

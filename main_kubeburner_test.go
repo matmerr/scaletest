@@ -14,36 +14,27 @@ import (
 )
 
 func TestRunKubeBurnerScenarios(t *testing.T) {
+	clusterProvider, err := providers.GetClusterProviderFromEnv()
+	if err != nil {
+		t.Fatalf("failed to get cluster provider from environment: %v", err)
+	}
 
-	// specify the cluster provider environment we want to use, in this case a kind cluster with Cilium
-	kindCluster := providers.KindWithCilium
-
-	// get the scenario for netpol churn config, in this case the netpol scenario
-	scenario := kbscenario.NetpolChurnConfig
+	scenario, err := kbscenario.GetScenarioFromEnv()
+	if err != nil {
+		t.Fatalf("failed to get scenario from environment: %v", err)
+	}
 
 	// create a new Kube-Burner executor, which will run the scenarios
 	kbexec := kb.NewKubeBurnerExecutor(
-
-		// pass the scenario to the executor
 		scenario,
-
-		// here we can specify any dependencies to install, and/or addons we want to install
 		flow.Pipe(
-
-			// need the kube-burner CLI to run the scenarios
 			kb.RunInstallKubeBurnerCLI(),
-
-			// unlike ClusterLoader2, Kube-Burner does not install Prometheus by default,
-			// so we need to install it here
 			prom.RunDeployPrometheus(),
-
-			// print the versions
 			new(welcome.Intro),
 		),
 	)
 
-	// Run the scenarios with the specified cluster provider, the executor, and
-	err := RunScenarios(kindCluster, kbexec)
+	err = RunScenarios(clusterProvider, kbexec)
 	if err != nil {
 		t.Fatalf("failed to run Kube-Burner scenarios: %v", err)
 	}

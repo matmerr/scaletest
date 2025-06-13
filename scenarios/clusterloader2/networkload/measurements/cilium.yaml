@@ -1,0 +1,375 @@
+steps:
+  - name:  Additional Measurements
+    measurements:
+    - Identifier: CESQueueingDelay
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: CES Queue Delay
+        metricVersion: v1
+        unit: s
+        queries:
+        - name: Perc99
+          query: histogram_quantile(0.99, sum(rate(cilium_operator_ces_queueing_delay_seconds_bucket[%v:])) by (le))
+        - name: Perc95
+          query: histogram_quantile(0.95, sum(rate(cilium_operator_ces_queueing_delay_seconds_bucket[%v:])) by (le))
+        - name: Perc50
+          query: histogram_quantile(0.50, sum(rate(cilium_operator_ces_queueing_delay_seconds_bucket[%v:])) by (le))
+    - Identifier: CiliumEndpointPropagationDelay
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Endpoint Propagation Delay
+        metricVersion: v1
+        unit: s
+        queries:
+        - name: Perc99
+          query: histogram_quantile(0.99, sum(rate(cilium_endpoint_propagation_delay_seconds_bucket[%v:])) by (le))
+        - name: Perc95
+          query: histogram_quantile(0.95, sum(rate(cilium_endpoint_propagation_delay_seconds_bucket[%v:])) by (le))
+        - name: Perc50
+          query: histogram_quantile(0.50, sum(rate(cilium_endpoint_propagation_delay_seconds_bucket[%v:])) by (le))
+    - Identifier: CiliumAvgCPUUsage
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Average CPU Usage
+        metricVersion: v1
+        unit: cpu
+        enableViolations: true
+        queries:
+        - name: Perc99
+          query: quantile(0.99, avg_over_time(rate(cilium_process_cpu_seconds_total[1m])[%v:]))
+        - name: Perc90
+          query: quantile(0.90, avg_over_time(rate(cilium_process_cpu_seconds_total[1m])[%v:]))
+        - name: Perc50
+          query: quantile(0.50, avg_over_time(rate(cilium_process_cpu_seconds_total[1m])[%v:]))
+    - Identifier: CiliumMaxCPUUsage
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Max CPU Usage
+        metricVersion: v1
+        unit: cpu
+        enableViolations: true
+        queries:
+        - name: Perc99
+          query: quantile(0.99, max_over_time(rate(cilium_process_cpu_seconds_total[1m])[%v:]))
+        - name: Perc90
+          query: quantile(0.90, max_over_time(rate(cilium_process_cpu_seconds_total[1m])[%v:]))
+        - name: Perc50
+          query: quantile(0.50, max_over_time(rate(cilium_process_cpu_seconds_total[1m])[%v:]))
+    - Identifier: CiliumAvgMemUsage
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Avg Memory Usage
+        metricVersion: v1
+        unit: MB
+        enableViolations: true
+        queries:
+        - name: Perc99
+          query: quantile(0.99, avg_over_time(cilium_process_resident_memory_bytes[%v:]) / 1024 / 1024)
+        - name: Perc90
+          query: quantile(0.90, avg_over_time(cilium_process_resident_memory_bytes[%v:]) / 1024 / 1024)
+        - name: Perc50
+          query: quantile(0.5, avg_over_time(cilium_process_resident_memory_bytes[%v:]) / 1024 / 1024)
+    - Identifier: CiliumMaxMemUsage
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Max Memory Usage
+        metricVersion: v1
+        unit: MB
+        enableViolations: true
+        queries:
+        - name: Perc99
+          query: quantile(0.99, max_over_time(cilium_process_resident_memory_bytes[%v:]) / 1024 / 1024)
+        - name: Perc90
+          query: quantile(0.90, max_over_time(cilium_process_resident_memory_bytes[%v:]) / 1024 / 1024)
+        - name: Perc50
+          query: quantile(0.5, max_over_time(cilium_process_resident_memory_bytes[%v:]) / 1024 / 1024)
+    - Identifier: CiliumOperatorAvgCPUUsage
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Operator Avg CPU Usage
+        metricVersion: v1
+        unit: cpu
+        enableViolations: true
+        queries:
+        - name: Perc99
+          query: quantile(0.99, avg_over_time(rate(cilium_operator_process_cpu_seconds_total[1m])[%v:]))
+        - name: Perc90
+          query: quantile(0.90, avg_over_time(rate(cilium_operator_process_cpu_seconds_total[1m])[%v:]))
+        - name: Perc50
+          query: quantile(0.50, avg_over_time(rate(cilium_operator_process_cpu_seconds_total[1m])[%v:]))
+    - Identifier: CiliumOperatorMaxCPUUsage
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Operator Max CPU Usage
+        metricVersion: v1
+        unit: cpu
+        enableViolations: true
+        queries:
+        - name: Perc99
+          query: quantile(0.99, max_over_time(rate(cilium_operator_process_cpu_seconds_total[1m])[%v:]))
+        - name: Perc90
+          query: quantile(0.90, max_over_time(rate(cilium_operator_process_cpu_seconds_total[1m])[%v:]))
+        - name: Perc50
+          query: quantile(0.50, max_over_time(rate(cilium_operator_process_cpu_seconds_total[1m])[%v:]))
+    - Identifier: CiliumBPFMapPressure
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium BPF Map Pressure
+        metricVersion: v1
+        unit: count
+        enableViolations: true
+        queries:
+        - name: ct4_global
+          query: quantile(0.99,(max_over_time(cilium_bpf_map_pressure{map_name="ct4_global"}[%v:])))
+        - name: lb4_services_v2
+          query: quantile(0.99,(max_over_time(cilium_bpf_map_pressure{map_name="lb4_services_v2"}[%v:])))
+        - name: ipcache
+          query: quantile(0.99,(max_over_time(cilium_bpf_map_pressure{map_name="ipcache"}[%v:])))
+        - name: lb4_backends_v3
+          query: quantile(0.99,(max_over_time(cilium_bpf_map_pressure{map_name="lb4_backends_v3"}[%v:])))
+        - name: lb4_reverse_nat
+          query: quantile(0.99,(max_over_time(cilium_bpf_map_pressure{map_name="lb4_reverse_nat"}[%v:])))
+        - name: lb_affinity_match
+          query: quantile(0.99,(max_over_time(cilium_bpf_map_pressure{map_name="lb_affinity_match"}[%v:])))
+        - name: lxc
+          query: quantile(0.99,(max_over_time(cilium_bpf_map_pressure{map_name="lxc"}[%v:])))
+    - Identifier: CiliumBPFMapVirtualMemoryMax
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium BPF Map Virtual Memory Max Bytes
+        metricVersion: v1
+        unit: count
+        enableViolations: true
+        queries:
+        - name: cilium_bpf_maps_virtual_memory_max_bytes 
+          query: quantile(0.99,(max_over_time(cilium_bpf_maps_virtual_memory_max_bytes{}[%v:])))
+    - Identifier: Cilium Datapath Conntrack GC Entries
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Datapath Conntrack GC Entries
+        metricVersion: v1
+        unit: count
+        enableViolations: true
+        queries:
+        - name: cilium_datapath_conntrack_gc_entries_v4_tcp_alive
+          query: quantile(0.99,(max_over_time(cilium_datapath_conntrack_gc_entries{family="ipv4",protocol="TCP",status="alive"}[%v:])))
+        - name: cilium_datapath_conntrack_gc_entries_v4_tcp_deleted
+          query: quantile(0.99,(max_over_time(cilium_datapath_conntrack_gc_entries{family="ipv4",protocol="TCP",status="deleted"}[%v:])))
+        - name: cilium_datapath_conntrack_gc_entries_v4_nontcp_alive
+          query: quantile(0.99,(max_over_time(cilium_datapath_conntrack_gc_entries{family="ipv4",protocol="non-TCP",status="alive"}[%v:])))
+        - name: cilium_datapath_conntrack_gc_entries_v4_nontcp_deleted
+          query: quantile(0.99,(max_over_time(cilium_datapath_conntrack_gc_entries{family="ipv4",protocol="non-TCP",status="deleted"}[%v:])))
+    - Identifier: CiliumControllersFailing
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Controllers Failing
+        metricVersion: v1
+        unit: count
+        enableViolations: true
+        queries:
+        - name: cilium_controllers_failing
+          query: quantile(0.99,(max_over_time(cilium_controllers_failing{}[%v:])))
+    - Identifier: CiliumProxyDatapathUpdateTimeout
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Proxy Datapath Update Timeout
+        metricVersion: v1
+        unit: count
+        enableViolations: true
+        queries:
+        - name: cilium_proxy_datapath_update_timeout_total
+          query: quantile(0.99,(max_over_time(cilium_proxy_datapath_update_timeout_total{}[%v:])))
+    - Identifier: CiliumProxyRedirects
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Proxy Redirects
+        metricVersion: v1
+        unit: count
+        enableViolations: true
+        queries:
+        - name: cilium_proxy_redirects_dns
+          query: quantile(0.99,(max_over_time(cilium_proxy_redirects{protocol_l7="dns"}[%v:])))
+    - Identifier: CiliumErrorsWarningsTotal
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Errors Warnings Total
+        metricVersion: v1
+        unit: count
+        enableViolations: true
+        queries:
+        - name: cilium_errors_total_fqdn_server
+          query: quantile(0.99,(max_over_time(cilium_errors_warnings_total{level="error",subsystem="fqdn/server"}[%v:])))
+        - name: cilium_errors_total_init
+          query: quantile(0.99,(max_over_time(cilium_errors_warnings_total{level="error",subsystem="init"}[%v:])))
+        - name: cilium_warning_total_fqdn_server
+          query: quantile(0.99,(max_over_time(cilium_errors_warnings_total{level="warning",subsystem="fqdn/server"}[%v:])))
+        - name: cilium_warning_total_fqdn_dnsproxy
+          query: quantile(0.99,(max_over_time(cilium_errors_warnings_total{level="warning",subsystem="fqdn/dnsproxy"}[%v:])))
+        - name: cilium_warning_total_hubble
+          query: quantile(0.99,(max_over_time(cilium_errors_warnings_total{level="warning",subsystem="hubble"}[%v:])))
+        - name: cilium_warning_total_init
+          query: quantile(0.99,(max_over_time(cilium_errors_warnings_total{level="warning",subsystem="init"}[%v:])))
+        - name: cilium_warning_total_klog
+          query: quantile(0.99,(max_over_time(cilium_errors_warnings_total{level="warning",subsystem="klog"}[%v:])))
+    - Identifier: CiliumUnreachableHealthEndpoints
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Unreachable Health Endpoints
+        metricVersion: v1
+        unit: count
+        enableViolations: true
+        queries:
+        - name: cilium_unreachable_health_endpoints
+          query: quantile(0.99,(max_over_time(cilium_unreachable_health_endpoints{}[%v:])))
+    - Identifier: CiliumUnreachableNodes
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Unreachable Nodes
+        metricVersion: v1
+        unit: count
+        enableViolations: true
+        queries:
+        - name: cilium_unreachable_nodes
+          query:  quantile(0.99,(max_over_time(cilium_unreachable_nodes{}[%v:])))
+    - Identifier: CiliumNodesAll
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Nodes All
+        metricVersion: v1
+        unit: count
+        enableViolations: true
+        queries:
+        - name: cilium_nodes_all_num
+          query: max(max_over_time(cilium_nodes_all_num{}[%v:]))
+    - Identifier: CiliumGoroutineCount
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Goroutine Count
+        metricVersion: v1
+        unit: count
+        enableViolations: true
+        queries:
+        - name: Perc99
+          query: quantile(0.99, max_over_time(go_goroutines{container="cilium-agent"}[%v:]))
+        - name: Perc90
+          query: quantile(0.90, max_over_time(go_goroutines{container="cilium-agent"}[%v:]))
+        - name: Perc50
+          query: quantile(0.50, max_over_time(go_goroutines{container="cilium-agent"}[%v:]))
+    - Identifier: CiliumOperatorAvgMemUsage
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Operator Avg Memory Usage
+        metricVersion: v1
+        unit: MB
+        enableViolations: true
+        queries:
+        - name: Perc99
+          query: quantile(0.99, avg_over_time(cilium_operator_process_resident_memory_bytes[%v:]) / 1024 / 1024)
+        - name: Perc90
+          query: quantile(0.90, avg_over_time(cilium_operator_process_resident_memory_bytes[%v:]) / 1024 / 1024)
+        - name: Perc50
+          query: quantile(0.5, avg_over_time(cilium_operator_process_resident_memory_bytes[%v:]) / 1024 / 1024)
+    - Identifier: HubbleMetricCardinality
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Hubble Metric Cardinality
+        metricVersion: v1
+        unit: count
+        queries:
+        - name: Drop
+          query: max(hubble_drop_total)
+        - name: TCPFlags
+          query: max(hubble_tcp_flags_total)
+        - name: FlowsProcessed
+          query: max(hubble_flows_processed_total)
+        - name: DNSQueries
+          query: max(hubble_dns_queries_total)
+        - name: DNSResponses
+          query: max(hubble_dns_responses_total)
+    - Identifier: HubbleFlowsProcessedTotal
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Hubble Flow Metrics
+        metricVersion: v1
+        unit: count
+        queries:
+        - name: node_local_dns_udp_to_endpoint
+          query: quantile(0.99, max_over_time(hubble_flows_processed_total{source="node-local-dns"}[%v:]))
+    - Identifier: HubbleLostEvents
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Hubble Lost Events
+        metricVersion: v1
+        unit: count
+        queries:
+        - name: ring_buffer
+          query:  quantile(0.99,(max_over_time(hubble_lost_events_total{source="hubble_ring_buffer"}[%v:])))
+        - name: observer_events_queue
+          query:  quantile(0.99,(max_over_time(hubble_lost_events_total{source="observer_events_queue"}[%v:])))
+    - Identifier: HubbleHTTPHandlerRequestDurationSecondsBucket
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Hubble HTTP Handler Request Duration Seconds Bucket
+        metricVersion: v1
+        unit: s
+        queries:
+        - name: 99percentile
+          query: histogram_quantile(0.99, sum(rate(hubble_metrics_http_handler_request_duration_seconds_bucket[%v:])) by (le))
+        - name: 95percentile
+          query: histogram_quantile(0.95, sum(rate(hubble_metrics_http_handler_request_duration_seconds_bucket[%v:])) by (le))
+        - name: 50percentile
+          query: histogram_quantile(0.50, sum(rate(hubble_metrics_http_handler_request_duration_seconds_bucket[%v:])) by (le))
+    - Identifier: CiliumEndpoints
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Endpoints
+        metricVersion: v1
+        unit: count
+        queries:
+        - name: total
+          query: max_over_time(apiserver_storage_objects{resource="ciliumendpoints.cilium.io"}[%v])
+    - Identifier: CiliumEndpointSlices
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Endpoint Slices
+        metricVersion: v1
+        unit: count
+        queries:
+        - name: total
+          query: max_over_time(apiserver_storage_objects{resource="ciliumendpointslices.cilium.io"}[%v])
+    - Identifier: CiliumIdentities
+      Method: GenericPrometheusQuery
+      Params:
+        action: {{$action}}
+        metricName: Cilium Identities
+        metricVersion: v1
+        unit: count
+        queries:
+        - name: total
+          query: max_over_time(apiserver_storage_objects{resource="ciliumidentities.cilium.io"}[%v])

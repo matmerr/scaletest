@@ -1,49 +1,60 @@
 package scenarios
 
 import (
-	"context"
 	"fmt"
+	"log/slog"
+	"os"
 
-	flow "github.com/Azure/go-workflow"
 	"github.com/matmerr/scaletest/pkg/yaml"
-	uniformqps "github.com/matmerr/scaletest/scenarios/clusterloader2/uniformqps"
 )
-
-type Scenario string
 
 const (
-	UniformQPS Scenario = "UniformQPS"
+	CL2ScenarioEnv = "CL2_SCENARIO"
 )
 
-// preserve mapping of string to scenarios, which may result in 1:many scenarios by the same name
-// later on
-var providerSetupIndex = map[Scenario][]yaml.Template{
-	UniformQPS: {
-		uniformqps.NewUniformQPSConfig(),
-	},
+type Scenario interface {
+	GetName() string
+	GetTemplates() []yaml.Template
 }
 
-func GetScenarioSteps(cl2s Scenario) ([]yaml.Template, error) {
-	steps, ok := providerSetupIndex[cl2s]
-	if !ok {
-		return nil, fmt.Errorf("unknown scenario: %s", cl2s)
+type ClusterLoader2Scenario struct {
+	Name      string
+	Templates []yaml.Template
+}
+
+func (s ClusterLoader2Scenario) GetName() string {
+	return s.Name
+}
+
+func (s ClusterLoader2Scenario) GetTemplates() []yaml.Template {
+	return s.Templates
+}
+
+func GetScenarioSteps(scenarioName string) ([]yaml.Template, error) {
+	if scenario, ok := scenarioRegistry[scenarioName]; ok {
+		return scenario.GetTemplates(), nil
 	}
-	return steps, nil
+	return nil, fmt.Errorf("Scenario not found")
 }
 
-func GenerateAllScenarioYAML() error {
-	steps := make([]flow.Steper, 0, len(providerSetupIndex))
-	for _, scenario := range providerSetupIndex {
-		for _, template := range scenario {
-			steps = append(steps, yaml.GenerateYaml(template))
+// GetScenarioFromEnv returns the ClusterLoader2Scenario from the CL2_SCENARIO env var, or logs available options if not found.
+func GetScenarioFromEnv() (*ClusterLoader2Scenario, error) {
+	scenarioName := os.Getenv(CL2ScenarioEnv)
+	if scenarioName == "" {
+		available := make([]string, 0, len(scenarioRegistry))
+		for k := range scenarioRegistry {
+			available = append(available, k)
 		}
+		slog.Error("CL2_SCENARIO not set. Please set the environment variable to one of the available scenarios.", "available", available)
+		return nil, fmt.Errorf("CL2_SCENARIO not set")
 	}
-	root := new(flow.Workflow)
-	root.Add(flow.Pipe(steps...))
-
-	err := root.Do(context.Background())
-	if err != nil {
-		return fmt.Errorf("failed to generate kube-burner scenario YAML files: %w", err)
+	if scenario, ok := scenarioRegistry[scenarioName]; ok {
+		return &scenario, nil
 	}
-	return nil
+	available := make([]string, 0, len(scenarioRegistry))
+	for k := range scenarioRegistry {
+		available = append(available, k)
+	}
+	slog.Error("Scenario not found", "requested", scenarioName, "available", available)
+	return nil, fmt.Errorf("Scenario not found")
 }

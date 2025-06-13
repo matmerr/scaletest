@@ -31,8 +31,8 @@ func NewClusterLoader2Executor(scenario cl2scenarios.Scenario, setupSteps flow.A
 	}
 }
 
-func (k *ClusterLoader2Executor) GetScenarioTemplates() ([]yaml.Template, error) {
-	return cl2scenarios.GetScenarioSteps(k.scenario)
+func (k *ClusterLoader2Executor) GetScenarioTemplates() []yaml.Template {
+	return k.scenario.GetTemplates()
 }
 
 func (c *ClusterLoader2Executor) GetRunWorkflow(templateConfig yaml.Template) *flow.Workflow {

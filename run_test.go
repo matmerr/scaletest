@@ -15,10 +15,7 @@ import (
 func RunScenarios(provider providers.Provider, executor executors.Executor) error {
 
 	// retrieve all of the yaml templates for the passed in scenario, to be handed to the executor below
-	scenarioTemplates, err := executor.GetScenarioTemplates()
-	if err != nil {
-		return fmt.Errorf("failed to get scenario templates: %w", err)
-	}
+	scenarioTemplates := executor.GetScenarioTemplates()
 
 	// get a list of all scenarios paths on disk based off their types
 	for _, scenario := range scenarioTemplates {
@@ -46,7 +43,7 @@ func RunScenarios(provider providers.Provider, executor executors.Executor) erro
 
 			// get the cluster setup/install steps for the provider,
 			// usually like create cluster.
-			providers.GetProviderSetupSteps(provider),
+			provider.GetSteps(),
 
 			// get the steps that were added to the executor, could be install prometheus, addons, etc.
 			// non provider specific steps that are more relevant to the test execution

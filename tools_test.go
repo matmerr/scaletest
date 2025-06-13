@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"log/slog"
 	"testing"
 
 	flow "github.com/Azure/go-workflow"
@@ -13,8 +14,17 @@ import (
 )
 
 func TestGenerate(t *testing.T) {
-	kbscenarios.GenerateAllScenarioYAML()
-	cl2scenarios.GenerateAllScenarioYAML()
+	slog.Info("📝 Generating YAML files for cluster-loader-2 scenarios...")
+	err := cl2scenarios.GenerateAllScenarioYAML()
+	if err != nil {
+		t.Fatalf("failed to generate cluster-loader-2 scenarios: %v", err)
+	}
+
+	slog.Info("📝 Generating YAML files for kube-burner scenarios...")
+	err = kbscenarios.GenerateAllScenarioYAML()
+	if err != nil {
+		t.Fatalf("failed to generate kube-burner scenarios: %v", err)
+	}
 }
 
 func TestDownloadTools(t *testing.T) {

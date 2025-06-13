@@ -1,55 +1,49 @@
 package scenarios
 
 import (
-	"context"
 	"fmt"
+	"log/slog"
+	"os"
 
-	flow "github.com/Azure/go-workflow"
 	"github.com/matmerr/scaletest/pkg/yaml"
-	netpolchurn "github.com/matmerr/scaletest/scenarios/kube-burner/netpol-churn"
 )
 
-type Scenario string
-
-const (
-	NetpolChurnConfig Scenario = "netpolchurn"
-	APIIntensive      Scenario = "apiintensive"
-)
-
-var providerSetupIndex = map[Scenario][]yaml.Template{
-	NetpolChurnConfig: {
-		netpolchurn.NewNetpolChurnConfig(),
-	},
-
-	APIIntensive: {
-		// Placeholder for future API intensive scenario
-		// apiintensive.NewApiIntensiveConfig(),
-	},
+type Scenario interface {
+	GetName() string
+	GetTemplates() []yaml.Template
 }
 
-func GetScenarioSteps(kbs Scenario) ([]yaml.Template, error) {
-	steps, ok := providerSetupIndex[kbs]
-	if !ok {
-		return nil, fmt.Errorf("unknown scenario: %s", kbs)
-	}
-	return steps, nil
+type KubeBurnerScenario struct {
+	Name      string
+	Templates []yaml.Template
 }
 
-// GenerateAllScenarioYAML generates YAML files for all defined scenarios in the provider setup index.
-// each scenario will have a config_generated.yaml file created in the current working directory.
-func GenerateAllScenarioYAML() error {
-	steps := make([]flow.Steper, 0, len(providerSetupIndex))
-	for _, scenario := range providerSetupIndex {
-		for _, template := range scenario {
-			steps = append(steps, yaml.GenerateYaml(template))
+func (s KubeBurnerScenario) GetName() string {
+	return s.Name
+}
+
+func (s KubeBurnerScenario) GetTemplates() []yaml.Template {
+	return s.Templates
+}
+
+// GetScenarioFromEnv returns the KubeBurnerScenario from the KB_SCENARIO env var, or logs available options if not found.
+func GetScenarioFromEnv() (*KubeBurnerScenario, error) {
+	scenarioName := os.Getenv(KBScenarioEnv)
+	if scenarioName == "" {
+		available := make([]string, 0, len(scenarioRegistry))
+		for k := range scenarioRegistry {
+			available = append(available, k)
 		}
+		slog.Error(KBScenarioEnv+" not set. Please set the environment variable to one of the available scenarios.", "available", available)
+		return nil, fmt.Errorf("%s not set", KBScenarioEnv)
 	}
-	root := new(flow.Workflow)
-	root.Add(flow.Pipe(steps...))
-
-	err := root.Do(context.Background())
-	if err != nil {
-		return fmt.Errorf("failed to generate kube-burner scenario YAML files: %w", err)
+	if scenario, ok := scenarioRegistry[scenarioName]; ok {
+		return &scenario, nil
 	}
-	return nil
+	available := make([]string, 0, len(scenarioRegistry))
+	for k := range scenarioRegistry {
+		available = append(available, k)
+	}
+	slog.Error("Scenario not found", "requested", scenarioName, "available", available)
+	return nil, fmt.Errorf("scenario not found")
 }
