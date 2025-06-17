@@ -47,7 +47,7 @@ jobs:
           KB_SCENARIO: ${{ github.event.inputs.KB_SCENARIO || 'netpolchurn' }}
           CLUSTER_PROVIDER: ${{ github.event.inputs.CLUSTER_PROVIDER || 'kindwithcilium' }}
         run: |
-          go test -v -run ^TestRunKubeBurnerScenarios$$ .
+          go test -v -run TestRunKubeBurnerScenarios .
 
       - name: Collect executor output artifacts
         run: |
