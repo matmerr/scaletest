@@ -14,7 +14,7 @@ import (
 )
 
 func TestGenerate(t *testing.T) {
-	slog.Info("📝 Generating YAML files for cluster-loader-2 scenarios...")
+	slog.Info("📝 Generating YAML files for clusterloader-2 scenarios...")
 	err := cl2scenarios.GenerateAllScenarioYAML()
 	if err != nil {
 		t.Fatalf("failed to generate cluster-loader-2 scenarios: %v", err)

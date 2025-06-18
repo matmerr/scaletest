@@ -1,5 +1,24 @@
-# This file was generated from the corresponding config.go, do not edit directly.
+package unifromqps
 
+import "github.com/matmerr/scaletest/scenarios/clusterloader2/modules"
+
+func NewUniformQPSConfig() Config {
+	return Config{
+		ReplicasPerNamespace: 1, // Default number of replicas per namespace
+		ModulePath:           modules.RelativePath(),
+	}
+}
+
+type Config struct {
+	ReplicasPerNamespace int    `yaml:"replicasPerNamespace,omitempty"` // Number of replicas per namespace
+	ModulePath           string `yaml:"modulePath,omitempty"`           // Path to the module directory
+}
+
+func (f Config) GetTemplate() string {
+	return configTemplate
+}
+
+const configTemplate = `
 name: test
 
 namespace:
@@ -11,6 +30,12 @@ tuningSets:
     qps: 1
 
 steps:
+
+- module:
+    path: {{ .ModulePath }}/cilium.yaml
+    params:
+      action: start
+
 - name: Start measurements
   measurements:
   - Identifier: PodStartupLatency
@@ -27,25 +52,13 @@ steps:
       kind: Deployment
       labelSelector: group = test-deployment
       operationTimeout: 120s
-  - Identifier: CiliumBPFMapPressure
-    Method: GenericPrometheusQuery
-    Params:
-      action: start
-      metricName: Cilium BPF Map Pressure
-      metricVersion: v1
-      unit: "%"
-      dimensions:
-        - map_name
-      queries:
-        - name: Max BPF Map Pressure
-          query: max(cilium_bpf_map_pressure)
-          threshold: 90
+
 - name: Create deployment
   phases:
   - namespaceRange:
       min: 1
       max: 1
-    replicasPerNamespace: 1
+    replicasPerNamespace: {{ .ReplicasPerNamespace }}
     tuningSet: Uniform1qps
     objectBundle:
     - basename: test-deployment
@@ -64,19 +77,10 @@ steps:
     Method: PodStartupLatency
     Params:
       action: gather
-- name: Measure Cilium Metrics
-  measurements:
-    - Identifier: CiliumBPFMapPressure
-      Method: GenericPrometheusQuery
-      Params:
-        action: gather
-        metricName: Cilium BPF Map Pressure
-        metricVersion: v1
-        unit: "%"
-        dimensions:
-          - map_name
-        queries:
-          - name: Max BPF Map Pressure
-            query: max(cilium_bpf_map_pressure)
-            threshold: 90
 
+- module:
+    path: {{ .ModulePath }}/cilium.yaml
+    params:
+      action: gather
+
+`

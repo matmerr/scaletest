@@ -136,12 +136,12 @@ To add a new scenario for either ClusterLoader2 or Kube-Burner, follow these ste
 
 **Prompt for ClusterLoader2:**
 ```
-Create a new scenario for clusterloader2 under the scenarios/clusterloader2 directory. The scenario should be named <your_scenario_name>, include a Go config definition, a parameterized YAML template, and register it in the scenario registry. Make sure the scenario is selectable via the CL2_SCENARIO environment variable and is compatible with the current struct-based registry pattern.
+Create a new scenario for clusterloader2 under the scenarios/clusterloader2 directory. The scenario should be named <yourscenarioname>, include a Go config definition, a parameterized YAML template which represents the CL2 config, and register it in the scenario registry. Follow the pattern the other scenarios use, and assigning scenario values within the clusterloader2 config at generation time with go template mechanism. Make sure the scenario is selectable via the CL2_SCENARIO environment variable and is compatible with the current struct-based registry pattern. Add the new scenario name to the respective github actions dropdown.
 ```
 
 **Prompt for Kube-Burner:**
 ```
-Create a new scenario for kube-burner under the scenarios/kube-burner directory. The scenario should be named <your_scenario_name>, include a Go config definition, a parameterized YAML template, and register it in the scenario registry. Make sure the scenario is selectable via the KB_SCENARIO environment variable and is compatible with the current struct-based registry pattern.
+Create a new scenario for kube-burner under the scenarios/kube-burner directory. The scenario should be named <yourscenarioname>, include a Go config definition, a parameterized YAML template which represents the KB config, and register it in the scenario registry. Follow the pattern the other scenarios use, and assigning scenario values within the kube-burner config at generation time with go template mechanism. Make sure the scenario is selectable via the KB_SCENARIO environment variable and is compatible with the current struct-based registry pattern. Add the new scenario name to the respective github actions dropdown.
 ```
 
 ### 2. Register the Scenario

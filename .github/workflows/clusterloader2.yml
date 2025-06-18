@@ -20,7 +20,7 @@ on:
 
 jobs:
   run-clusterloader2:
-    name: "Run clusterloader2: ${{ github.event.inputs.CL2_SCENARIO || 'no_cl2_scenario_set' }} on ${{ github.event.inputs.CLUSTER_PROVIDER || 'no_cluster_provider_set' }}"
+    name: "Run clusterloader2 - scenario: \"${{ github.event.inputs.CL2_SCENARIO || 'no_cl2_scenario_set' }}\" on cluster provider: \"${{ github.event.inputs.CLUSTER_PROVIDER || 'no_cluster_provider_set' }}\""
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

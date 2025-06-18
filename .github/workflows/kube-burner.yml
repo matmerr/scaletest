@@ -22,7 +22,7 @@ on:
 
 jobs:
   run-kube-burner:
-    name: "Run kube-burner: ${{ github.event.inputs.KB_SCENARIO || 'no_kb_scenario_set' }} on ${{ github.event.inputs.CLUSTER_PROVIDER || 'no_cluster_provider_set' }}"
+    name: "Run kube-burner - scenario: \"${{ github.event.inputs.KB_SCENARIO || 'no_kb_scenario_set' }}\" on cluster provider: \"${{ github.event.inputs.CLUSTER_PROVIDER || 'no_cluster_provider_set' }}\""
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
