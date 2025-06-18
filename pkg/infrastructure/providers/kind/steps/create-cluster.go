@@ -53,6 +53,10 @@ func (s *CreateKindCluster) Do(ctx context.Context) error {
 			{"role": "worker"},
 			{"role": "worker"},
 			{"role": "worker"},
+			{"role": "worker"},
+			{"role": "worker"},
+			{"role": "worker"},
+			{"role": "worker"},
 		},
 	}
 

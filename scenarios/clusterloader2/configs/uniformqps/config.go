@@ -64,7 +64,7 @@ steps:
     - basename: test-deployment
       objectTemplatePath: "./templates/deployment.yaml"
       templateFillMap:
-        Replicas: 10
+        Replicas: 150
 - name: Wait for pods to be running
   measurements:
   - Identifier: WaitForControlledPodsRunning
@@ -77,6 +77,13 @@ steps:
     Method: PodStartupLatency
     Params:
       action: gather
+
+- name: Sleep
+  measurements:
+  - Identifier: WaitAfterExec
+    Method: Sleep
+    Params:
+      duration: 1m
 
 - module:
     path: {{ .ModulePath }}/cilium.yaml
