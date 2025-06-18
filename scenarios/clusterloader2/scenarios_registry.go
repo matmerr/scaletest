@@ -9,14 +9,14 @@ import (
 // preserve mapping of string to scenarios, which may result in 1:many scenarios by the same name
 // later on
 var scenarioRegistry = map[string]ClusterLoader2Scenario{
-	"UniformQPS": {
-		Name: "UniformQPS",
+	"uniformqps": {
+		Name: "uniformqps",
 		Templates: []yaml.Template{
 			uniformqps.NewUniformQPSConfig(),
 		},
 	},
-	"HighTrafficLoad": {
-		Name: "HighTrafficLoad",
+	"hightrafficload": {
+		Name: "hightrafficload",
 		Templates: []yaml.Template{
 			networkload.NewNetworkLoadConfig(),
 		},

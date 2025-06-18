@@ -2,7 +2,6 @@ package scenarios
 
 import (
 	"fmt"
-	"log/slog"
 	"os"
 
 	"github.com/matmerr/scaletest/pkg/yaml"
@@ -39,22 +38,18 @@ func GetScenarioSteps(scenarioName string) ([]yaml.Template, error) {
 
 // GetScenarioFromEnv returns the ClusterLoader2Scenario from the CL2_SCENARIO env var, or logs available options if not found.
 func GetScenarioFromEnv() (*ClusterLoader2Scenario, error) {
-	scenarioName := os.Getenv(CL2ScenarioEnv)
-	if scenarioName == "" {
-		available := make([]string, 0, len(scenarioRegistry))
-		for k := range scenarioRegistry {
-			available = append(available, k)
-		}
-		slog.Error("CL2_SCENARIO not set. Please set the environment variable to one of the available scenarios.", "available", available)
-		return nil, fmt.Errorf("CL2_SCENARIO not set")
-	}
-	if scenario, ok := scenarioRegistry[scenarioName]; ok {
-		return &scenario, nil
-	}
 	available := make([]string, 0, len(scenarioRegistry))
 	for k := range scenarioRegistry {
 		available = append(available, k)
 	}
-	slog.Error("Scenario not found", "requested", scenarioName, "available", available)
-	return nil, fmt.Errorf("Scenario not found")
+
+	scenarioName := os.Getenv(CL2ScenarioEnv)
+	if scenarioName == "" {
+		return nil, fmt.Errorf("%s not set, available options: %v", CL2ScenarioEnv, available)
+	}
+	if scenario, ok := scenarioRegistry[scenarioName]; ok {
+		return &scenario, nil
+	}
+
+	return nil, fmt.Errorf("scenario not found, available options: %v", available)
 }

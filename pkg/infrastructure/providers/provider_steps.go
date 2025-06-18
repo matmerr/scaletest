@@ -2,7 +2,6 @@ package providers
 
 import (
 	"fmt"
-	"log/slog"
 	"os"
 
 	flow "github.com/Azure/go-workflow"
@@ -40,7 +39,7 @@ func GetClusterProviderFromEnv() (*ClusterProvider, error) {
 	for k := range providerSetupIndex {
 		available = append(available, k)
 	}
-	slog.Warn("ClusterProvider not found", "requested", clusterProviderName, "available", available)
-	return nil, fmt.Errorf("ClusterProvider not found")
+
+	return nil, fmt.Errorf("%s not set. Available providers: %v", EnvClusterProvider, available)
 
 }

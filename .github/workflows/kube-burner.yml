@@ -3,11 +3,6 @@ name: Run Kube-Burner Scenario
 on:
   workflow_dispatch:
     inputs:
-      NETPOL_CHURN_JOB_ITERATIONS:
-        description: "Number of iterations for netpol churn job"
-        required: true
-        default: 5
-        type: number
       KB_SCENARIO:
         description: "Kube-Burner scenario to run"
         required: false
@@ -27,8 +22,7 @@ on:
 
 jobs:
   run-kube-burner:
-    name: >-
-      Run kube-burner: ${{ github.event.inputs.KB_SCENARIO != '' && github.event.inputs.KB_SCENARIO || 'netpolchurn' }} on ${{ github.event.inputs.CLUSTER_PROVIDER || 'kindwithcilium' }}
+    name: "Run kube-burner: ${{ github.event.inputs.KB_SCENARIO || 'no_kb_scenario_set' }} on ${{ github.event.inputs.CLUSTER_PROVIDER || 'no_cluster_provider_set' }}"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

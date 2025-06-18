@@ -12,9 +12,9 @@ tools:
 .PHONY: test-cl2
 test-cl2:
 	@echo "Running clusterloader2 tests..."
-	go test -v -run ^TestRunClusterLoader2Scenarios$$ .
+	go test -count=1 -v -run ^TestRunClusterLoader2Scenarios$$ .
 
-.PHONY: test-kubeburner
-test-kubeburner:
+.PHONY: test-kb
+test-kb:
 	@echo "Running kubeburner tests..."
-	go test -v -run ^TestRunKubeBurnerScenarios$$ .
+	go test -count=1 -v -run ^TestRunKubeBurnerScenarios$$ .

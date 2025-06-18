@@ -2,6 +2,7 @@ package ciliumsteps
 
 import (
 	"context"
+	"log"
 	"log/slog"
 	"time"
 
@@ -30,7 +31,7 @@ func (c *InstallCiliumStep) Do(ctx context.Context) error {
 
 	settings := cli.New()
 	actionConfig := new(action.Configuration)
-	if err := actionConfig.Init(genericclioptions.NewConfigFlags(false), namespace, "secrets", slog.Info); err != nil {
+	if err := actionConfig.Init(genericclioptions.NewConfigFlags(false), namespace, "secrets", log.Printf); err != nil {
 		slog.Error("Failed to initialize Helm", "err", err)
 		return err
 	}
@@ -87,7 +88,6 @@ func (c *InstallCiliumStep) Do(ctx context.Context) error {
 		install.CreateNamespace = false
 		install.Wait = true
 		install.Timeout = 5 * time.Minute
-
 		rel, err := install.Run(chart, vals)
 		if err != nil {
 			slog.Error("Failed to install Cilium", "err", err)

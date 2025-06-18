@@ -2,7 +2,6 @@ package scenarios
 
 import (
 	"fmt"
-	"log/slog"
 	"os"
 
 	"github.com/matmerr/scaletest/pkg/yaml"
@@ -28,22 +27,18 @@ func (s KubeBurnerScenario) GetTemplates() []yaml.Template {
 
 // GetScenarioFromEnv returns the KubeBurnerScenario from the KB_SCENARIO env var, or logs available options if not found.
 func GetScenarioFromEnv() (*KubeBurnerScenario, error) {
-	scenarioName := os.Getenv(KBScenarioEnv)
-	if scenarioName == "" {
-		available := make([]string, 0, len(scenarioRegistry))
-		for k := range scenarioRegistry {
-			available = append(available, k)
-		}
-		slog.Error(KBScenarioEnv+" not set. Please set the environment variable to one of the available scenarios.", "available", available)
-		return nil, fmt.Errorf("%s not set", KBScenarioEnv)
-	}
-	if scenario, ok := scenarioRegistry[scenarioName]; ok {
-		return &scenario, nil
-	}
 	available := make([]string, 0, len(scenarioRegistry))
 	for k := range scenarioRegistry {
 		available = append(available, k)
 	}
-	slog.Error("Scenario not found", "requested", scenarioName, "available", available)
-	return nil, fmt.Errorf("scenario not found")
+
+	scenarioName := os.Getenv(KBScenarioEnv)
+	if scenarioName == "" {
+		return nil, fmt.Errorf("%s not set, available options: %v", KBScenarioEnv, available)
+	}
+	if scenario, ok := scenarioRegistry[scenarioName]; ok {
+		return &scenario, nil
+	}
+
+	return nil, fmt.Errorf("scenario not found, available options: %v", available)
 }
