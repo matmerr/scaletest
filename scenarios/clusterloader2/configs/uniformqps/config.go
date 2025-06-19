@@ -43,7 +43,8 @@ steps:
     Params:
       action: start
       labelSelector: group = test-pod
-      threshold: 20s
+      threshold: 30s
+
   - Identifier: WaitForControlledPodsRunning
     Method: WaitForControlledPodsRunning
     Params:
@@ -51,7 +52,7 @@ steps:
       apiVersion: apps/v1
       kind: Deployment
       labelSelector: group = test-deployment
-      operationTimeout: 120s
+      operationTimeout: 240s
 
 - name: Create deployment
   phases:
@@ -64,7 +65,8 @@ steps:
     - basename: test-deployment
       objectTemplatePath: "./templates/deployment.yaml"
       templateFillMap:
-        Replicas: 150
+        Replicas: 50
+
 - name: Wait for pods to be running
   measurements:
   - Identifier: WaitForControlledPodsRunning

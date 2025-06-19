@@ -12,85 +12,29 @@ This project automates the deployment and benchmarking of Kubernetes clusters us
 - `scenarios/`: Scenario definitions and scenario-specific assets for each test type (e.g., `scenarios/kube-burner/`, `scenarios/clusterloader2/`). Scenarios are registered in a struct-based registry and selected via environment variable.
 - `Makefile`: Build, test, and utility targets for local development and CI.
 - `.gitignore`: Ignores all `output/` directories under scenarios and other generated files.
-- `artifacts/`: Output and log artifacts from test runs and CI jobs.
 
-## Required Environment Variables
 
-To run tests and workflows, you must set the following environment variables. These are grouped by executor:
+## Usage: Running in CI
 
-### ClusterLoader2
+The scenario and provider can be selected via GitHub Actions inputs. The workflows are designed to run matrix-based tests across different scenarios and providers.
 
-```sh
-export CLUSTER_PROVIDER=kindwithcilium
-export CL2_SCENARIO=uniformqps
-make test-cl2
-```
+- Queue the scenario and cluster provider you want to test in the GitHub Actions UI. For example, you can select `uniformqps` scenario with `kindwithcilium` provider.
 
-or for AKS:
+![alt text](docs/img/gha-queue.png)
 
-```sh
-export CLUSTER_PROVIDER=aksexistingcluster
-export CL2_SCENARIO=networkload
-make test-cl2
-```
+- Scenario results are attached to the run as artifacts.
 
-### Kube-Burner
+![alt text](docs/img/gha-artifacts.png)
 
-```sh
-export CLUSTER_PROVIDER=kindwithcilium
-export KB_SCENARIO=netpolchurn
-make test-kb
-```
+## Usage: Running Locally
 
-or for AKS:
-
-```sh
-export CLUSTER_PROVIDER=aksexistingcluster
-export KB_SCENARIO=apiintensive
-make test-kb
-```
-
-**Notes:**
-- These variables are required for both local runs and CI workflows. If not set or set to an invalid value, the test will fail and log available options.
-- For Azure-based providers, you may also need to set Azure authentication environment variables such as:
-  - `AZURE_SUBSCRIPTION_ID`
-  - `AZURE_CLIENT_ID`
-  - `AZURE_TENANT_ID`
-  - `AZURE_CLIENT_SECRET`
-- Scenario and provider names must match those registered in the codebase and the GitHub Actions workflow dropdowns.
-
-## Usage
+You can run any scenario with any provider locally using environment variables and Makefile targets. Here are some common permutations:
 
 ### Prerequisites
 - Go 1.20+
 - GNU Make
 - Docker (for kind clusters)
 - Azure CLI (for Azure provider, if used)
-
-### Downloading Tools
-To download required binaries (kind, kube-burner, etc.):
-
-```sh
-make tools
-```
-
-### Generating Scenario YAMLs
-To generate scenario YAML files for all registered scenarios:
-
-```sh
-make generate
-```
-
-### Running Tests and Workflows
-
-- Scenario and provider selection is now handled via environment variables (`KB_SCENARIO`, `CL2_SCENARIO`, `CLUSTER_PROVIDER`) and validated against the scenario/provider registries. If an invalid value is provided, available options are logged and the test fails early.
-- All scenario and provider logic is modular, registry-driven, and CI-friendly.
-
----
-
-## Running Locally: Example Permutations
-
-You can run any scenario with any provider locally using environment variables and Makefile targets. Here are some common permutations:
 
 ### ClusterLoader2
 
@@ -101,12 +45,6 @@ export CL2_SCENARIO=uniformqps
 make test-cl2
 ```
 
-Run the `networkload` scenario on an existing AKS cluster:
-```sh
-export CLUSTER_PROVIDER=aksexistingcluster
-export CL2_SCENARIO=networkload
-make test-cl2
-```
 
 ### Kube-Burner
 
@@ -126,13 +64,36 @@ make test-kb
 
 > **Tip:** You can list available providers and scenarios by checking the dropdowns in the GitHub Actions workflows or by reviewing the scenario/provider registries in the code.
 
----
+
+--- 
+## Developer Environment
+
+### Downloading Tools
+To download required binaries (kind, kube-burner, etc.):
+
+```sh
+make tools
+```
+
+### Generating Scenario YAMLs
+To generate scenario YAML files for all registered scenarios:
+
+```sh
+make generate
+```
+
+### Running Tests and Workflows
+
+- Scenario and provider selection is now handled via environment variables (`KB_SCENARIO`, `CL2_SCENARIO`, `CLUSTER_PROVIDER`) and validated against the scenario/provider registries. If an invalid value is provided, available options are logged and the test fails early.
+
 
 ## Creating a New Scenario
 
 To add a new scenario for either ClusterLoader2 or Kube-Burner, follow these steps:
 
 ### 1. Generate a New Scenario with Copilot Agent
+
+> **Tip:** Make sure Copilot is set to `Agent` mode (Ctrl + Shift + I), not `Ask` mode
 
 **Prompt for ClusterLoader2:**
 ```
@@ -143,6 +104,10 @@ Create a new scenario for clusterloader2 under the scenarios/clusterloader2 dire
 ```
 Create a new scenario for kube-burner under the scenarios/kube-burner directory. The scenario should be named <yourscenarioname>, include a Go config definition, a parameterized YAML template which represents the KB config, and register it in the scenario registry. Follow the pattern the other scenarios use, and assigning scenario values within the kube-burner config at generation time with go template mechanism. Make sure the scenario is selectable via the KB_SCENARIO environment variable and is compatible with the current struct-based registry pattern. Add the new scenario name to the respective github actions dropdown.
 ```
+
+**Example Copilot results:**
+
+![alt text](docs/img/copilot-example.png)
 
 ### 2. Register the Scenario
 - Add your new scenario to the appropriate scenario registry file (e.g., `scenarios/clusterloader2/scenarios_registry.go` or `scenarios/kube-burner/scenarios.go`).
